@@ -37,7 +37,14 @@ Done: full React port of the original page, plus an interactive terminal (`help`
 - resume PDF: drop the file in `public/resume.pdf` and set `ME.pdf = '/resume.pdf'` to show the download button
 - meta description in `index.html`
 
-Also not done: git repository, deployment/hosting, custom domain. The contact form opens the visitor's email app (`mailto:`); there is no backend.
+Also not done: deployment/hosting, custom domain. The contact form opens the visitor's email app (`mailto:`); there is no backend.
+
+## Git and GitHub
+
+- Public repo: https://github.com/pranayyyb/portfolio (branch `main`, remote `origin`).
+- The GitHub CLI is installed at `~/.local/bin/gh` (not on PATH — call it by full path) and is logged in as `pranayyyb`. `git push` works over HTTPS through it.
+- Commit author is set for this repo only: "Pranay Bathija" (guessed from the email, not confirmed) / pranay.bathija25@gmail.com. There is no global git identity.
+- The repo is public: never commit secrets, and ask before pushing anything personal the owner hasn't approved.
 
 ## Decisions and conventions
 
