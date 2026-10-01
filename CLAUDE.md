@@ -69,4 +69,6 @@ Also not done: deployment/hosting, custom domain. The contact form opens the vis
 
 ## Location
 
-This folder is a Claude scratch workspace under `~/Library/Application Support/Claude/scratch-workspaces/…`, which is hidden in Finder. If the owner wants a permanent home (e.g. `~/Documents/portfolio`), copy everything except `node_modules` and `dist`, then run `npm install`.
+The project lives at `~/Documents/portfolio` (moved there on 2026-10-02 at the owner's request). This is the only copy to work in.
+
+An older copy remains in the Claude scratch workspace where the project started (`~/Library/Application Support/Claude/scratch-workspaces/…/scratch-2026-09-30-cf3938`). It is stale; its CLAUDE.md points here. Don't edit or push from it.
