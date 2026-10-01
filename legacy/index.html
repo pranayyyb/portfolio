@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[Your Name] — Application Support Engineer</title>
+<meta name="description" content="[Your Name], Application Support Engineer. I keep business-critical apps running and cut repeat incidents. Get in touch.">
+<style>
+:root{--face:#c0c0c0;--hi:#fff;--sh:#808080;--dk:#000;--title:#0a246a;--title2:#a6caf0}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;font:12px/1.4 Tahoma,"MS Sans Serif",Verdana,sans-serif;user-select:none}
+button{font:inherit;cursor:pointer}
+/* boot + login */
+#boot{position:fixed;inset:0;background:#000;color:#ccc;font:14px/1.5 "Courier New",monospace;padding:24px;z-index:100;white-space:pre-wrap;cursor:pointer}
+#boot small{position:absolute;right:24px;bottom:20px;color:#666}
+#login{position:fixed;inset:0;background:#3a7f7f;z-index:90;display:none;place-items:center}
+.dlg{width:min(92vw,380px);background:var(--face);border:2px outset var(--hi);box-shadow:3px 3px 8px rgba(0,0,0,.5)}
+.dlg .tb{margin:2px}
+.dlg .in{padding:14px}
+.dlg label{display:grid;grid-template-columns:70px 1fr;align-items:center;margin-bottom:8px}
+.dlg input{border:2px inset var(--hi);padding:3px;font:inherit}
+.dlg .row{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.hint{text-align:center;color:var(--sh);margin-top:12px;font-size:11px}
+.b98{background:var(--face);border:2px outset var(--hi);padding:4px 18px;min-width:72px}
+.b98:active{border-style:inset}
+/* desktop: pure-CSS "Bliss"-style hill */
+#desk{position:fixed;inset:0 0 32px 0;background:radial-gradient(120% 60% at 30% 108%,#4fa832 0 55%,transparent 55.2%),radial-gradient(100% 45% at 90% 112%,#3c8c26 0 55%,transparent 55.2%),linear-gradient(#2a6fd6,#8cc4f5 70%);overflow:hidden}
+#icons{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;flex-wrap:wrap;gap:6px;height:calc(100% - 16px);align-content:flex-start}
+.ico{width:84px;text-align:center;color:#fff;text-shadow:1px 1px 2px #000;padding:4px;border:1px dotted transparent;cursor:pointer}
+.ico i{display:block;font-size:34px;font-style:normal;line-height:1.1;filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5))}
+.ico:hover,.ico.sel{background:rgba(10,36,106,.45);border-color:#fff}
+#cta{position:absolute;right:20px;bottom:20px;background:#ffffe1;border:1px solid #000;padding:10px 14px;max-width:260px;box-shadow:2px 2px 0 rgba(0,0,0,.4);cursor:pointer}
+#cta b{display:block;margin-bottom:2px}
+/* windows */
+.win{position:absolute;background:var(--face);border:2px outset var(--hi);box-shadow:3px 3px 10px rgba(0,0,0,.45);display:flex;flex-direction:column;min-width:260px;min-height:160px;animation:pop .15s}
+@keyframes pop{from{transform:scale(.92);opacity:0}}
+.win[hidden]{display:none}
+.win.max{inset:0 0 0 0!important;width:auto!important;height:auto!important}
+.tb{background:linear-gradient(90deg,var(--title),var(--title2));color:#fff;font-weight:700;padding:3px 4px;display:flex;align-items:center;gap:6px;cursor:move}
+.win:not(.active) .tb{background:linear-gradient(90deg,#808080,#b8b8b8)}
+.tb span{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.tb button{width:18px;height:16px;padding:0;line-height:12px;font-size:11px;background:var(--face);border:2px outset var(--hi);font-weight:700}
+.wb{flex:1;margin:2px;background:#fff;border:2px inset var(--hi);overflow:auto;user-select:text;padding:14px;color:#111}
+.wb h2{margin:0 0 6px;font-size:18px}.wb h3{margin:16px 0 6px;font-size:13px}
+.wb p{margin:0 0 8px}
+.chip{display:inline-block;background:var(--title);color:#fff;padding:2px 8px;margin:0 4px 4px 0;font-size:11px}
+.link{display:inline-block;background:var(--face);border:2px outset var(--hi);padding:5px 16px;color:#000;text-decoration:none;margin:0 6px 6px 0}
+.note{background:#ffffe1;border:1px solid #cc9;padding:8px 10px;margin-top:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.stats div{border:2px inset var(--hi);padding:8px;text-align:center;background:var(--face)}
+.stats b{display:block;font-size:20px}
+/* explorer */
+.xp{display:flex;height:100%;margin:-14px;min-height:260px}
+.xp aside{width:150px;border-right:1px solid var(--sh);padding:10px;flex-shrink:0}
+.xp aside div{padding:3px 6px;cursor:default}.xp aside .on{background:var(--title);color:#fff}
+.xp main{flex:1;padding:14px;overflow:auto}
+.files{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.file{text-align:center;padding:6px;cursor:pointer}.file i{display:block;font-size:34px;font-style:normal}.file:hover{background:#cde}
+.back{margin-bottom:12px}
+/* terminal */
+.term{background:#000;color:#0f0;font:13px/1.5 "Courier New",monospace;margin:-14px;padding:14px;min-height:100%;white-space:pre-wrap}
+.term .k{color:#8f8}
+/* taskbar */
+#bar{position:fixed;left:0;right:0;bottom:0;height:32px;background:var(--face);border-top:2px solid var(--hi);display:flex;align-items:center;gap:4px;padding:2px 4px;z-index:50}
+#start{font-weight:700;display:flex;gap:6px;align-items:center;padding:3px 10px}
+.sep{width:2px;height:22px;border-left:1px solid var(--sh);border-right:1px solid var(--hi);margin:0 2px}
+.tbtn{max-width:150px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:3px 10px;min-width:0}
+.tbtn.on{border-style:inset;background:#e0e0e0;font-weight:700}
+#tasks{display:flex;gap:4px;flex:1;min-width:0;overflow:hidden}
+#clock{border:1px inset var(--hi);padding:3px 10px;margin-left:auto}
+a.tbtn{color:#000;text-decoration:none}
+#menu{position:fixed;left:2px;bottom:32px;width:210px;background:var(--face);border:2px outset var(--hi);display:none;z-index:60}
+#menu div{padding:8px 14px;cursor:pointer;display:flex;gap:10px}
+#menu div:hover{background:var(--title);color:#fff}
+#menu hr{margin:2px 0;border:0;border-top:1px solid var(--sh)}
+@media(max-width:700px){.win{inset:0 0 0 0!important;width:auto!important;height:auto!important}.xp aside{display:none}#cta{display:none}.tbtn{max-width:80px}.hide-m{display:none}}
+</style>
+</head>
+<body>
+
+<div id="boot">Award Modular BIOS v4.51PG, An Energy Star Ally
+Copyright (C) 1984-98, Award Software, Inc.
+<span id="bootlog"></span><small>Click anywhere to skip</small></div>
+
+<div id="login"><div class="dlg">
+  <div class="tb"><span>Welcome</span></div>
+  <div class="in">
+    <p>Welcome, visitor. Sign in to view [Your Name]'s portfolio.</p>
+    <label>User name:<input value="guest"></label>
+    <label>Password:<input type="password" value="hireme123"></label>
+    <div class="row"><button class="b98" id="ok">OK</button><button class="b98" id="no">Cancel</button></div>
+    <div class="hint">Any password will do. No really.</div>
+  </div>
+</div></div>
+
+<div id="desk">
+  <div id="icons"></div>
+  <div id="cta" onclick="openApp('contact')"><b>📬 Now accepting new support engagements</b>Click here to get in touch — I reply within [24 hours].</div>
+</div>
+
+<div id="menu"></div>
+<div id="bar">
+  <button class="b98" id="start"><span>🪟</span>Start</button><div class="sep"></div>
+  <a class="b98 tbtn hide-m" href="mailto:you@example.com?subject=Support%20enquiry">✉ Email</a>
+  <a class="b98 tbtn hide-m" href="https://linkedin.com/in/[you]" target="_blank" rel="noopener">in LinkedIn</a>
+  <a class="b98 tbtn hide-m" href="https://github.com/[you]" target="_blank" rel="noopener">⌥ GitHub</a>
+  <div class="sep"></div><div id="tasks"></div><div id="clock"></div>
+</div>
+
+<script>
+const $=(s,e=document)=>e.querySelector(s), ME={name:'[Your Name]',email:'you@example.com',li:'https://linkedin.com/in/[you]',gh:'https://github.com/[you]',cal:'https://calendly.com/[you]'};
+
+/* ---- content: edit here ---- */
+const PROJECTS=[
+ {n:'Payment API Stabilisation',d:'Recurring outages on a payments API caused failed checkouts. I traced the root cause to connection-pool exhaustion, fixed it, and added alerting. Repeat incidents dropped 64% and MTTR fell from 2h to 20m.',t:['Splunk','SQL','Linux','ServiceNow'],r:'−64% repeat incidents',l:'#'},
+ {n:'Ticket Triage Automation',d:'Wrote runbooks and scripts that auto-classify and resolve the top 10 recurring tickets, freeing the team for real incidents.',t:['Python','Bash','Jira'],r:'40% fewer tickets',l:'#'},
+ {n:'Monitoring & Alerting Overhaul',d:'Replaced noisy alerts with actionable, severity-based ones with on-call runbooks.',t:['Datadog','PagerDuty','Grafana'],r:'−70% alert noise',l:'#'},
+ {n:'Database Performance Tuning',d:'Found slow queries via log analysis and tuned indexes for a reporting app.',t:['SQL','Oracle','AWR'],r:'Reports 8× faster',l:'#'},
+ {n:'Release & Deployment Support',d:'Supported weekly releases with smoke tests, rollback plans and post-deploy verification.',t:['CI/CD','Jenkins','Bash'],r:'0 failed releases / 6 mo',l:'#'},
+ {n:'Knowledge Base Rebuild',d:'Audited and rewrote support documentation so L1 could resolve more without escalating.',t:['Confluence','Runbooks'],r:'L1 resolution +25%',l:'#'}
+];
+const STACK=[['Monitoring','Splunk, Datadog, Grafana, Nagios'],['Ticketing','ServiceNow, Jira Service Mgmt, Zendesk'],['Databases','SQL, Oracle, PostgreSQL, MySQL'],['OS / Scripting','Linux, Windows Server, Bash, Python, PowerShell'],['APIs / Cloud','REST, Postman, AWS, Azure'],['Practices','ITIL, RCA, runbooks, SLA mgmt, on-call']];
+const APPS={
+ resume:{i:'📄',t:'Resume.doc',w:560,h:460,b:()=>`<h2>${ME.name}</h2><p><b>Application Support Engineer</b> · [City] · ${ME.email}</p>
+  <div class="stats"><div><b>[6+]</b>yrs in app support</div><div><b>[2,000+]</b>incidents resolved</div><div><b>[99%]</b>SLA compliance</div></div>
+  <h3>About</h3><p>I'm the engineer teams call when production breaks. I triage, diagnose and fix issues, then remove the root cause so they don't return. [Add 1–2 lines on your domain: fintech, SaaS, healthcare…]</p>
+  <h3>Experience</h3><p><b>[Role], [Company]</b> — [Dates]<br>• [Achievement with a number]<br>• [Achievement with a number]</p>
+  <p><b>[Role], [Company]</b> — [Dates]<br>• [Achievement with a number]</p>
+  <h3>Certifications</h3><p>[ITIL 4 Foundation] · [AWS Cloud Practitioner]</p>
+  <div class="note">“[Short client or manager quote about fast resolution and calm communication.]” — [Name, Title, Company]</div>
+  <p style="margin-top:12px"><a class="link" href="#" download>⬇ Download PDF</a><a class="link" href="#" onclick="openApp('contact');return false">Hire me →</a></p>`},
+ projects:{i:'📁',t:'My Projects',w:700,h:480,b:()=>`<div class="xp"><aside><div>🖥 My Computer</div><div style="padding-left:16px">💽 Local Disk (C:)</div><div style="padding-left:28px">📂 Documents</div><div class="on" style="margin-left:40px">📂 Projects</div><div style="padding-left:28px">📂 Downloads</div><div>🗑 Recycle Bin</div></aside><main id="xpm"></main></div>`,init:w=>{const m=$('#xpm',w),list=()=>{m.innerHTML='<div class="files">'+PROJECTS.map((p,k)=>`<div class="file" data-k="${k}"><i>📁</i>${p.n}</div>`).join('')+'</div>'};list();
+   m.onclick=e=>{const f=e.target.closest('.file');if(f){const p=PROJECTS[f.dataset.k];m.innerHTML=`<button class="b98 back">← Back to Projects</button><h2>📁 ${p.n}</h2><p style="color:#666">Type: Case study</p><span class="chip" style="background:#2a7a2a">${p.r}</span><h3>Description</h3><p>${p.d}</p><h3>Technologies used</h3>${p.t.map(x=>`<span class="chip">${x}</span>`).join('')}<h3>Links</h3><a class="link" href="${p.l}">Case study</a><div class="note"><b>Note:</b> Need results like this? <a href="#" onclick="openApp('contact');return false">Contact me</a>.</div>`}else if(e.target.closest('.back'))list()}}},
+ stack:{i:'⌨',t:'Tech Stack',w:560,h:380,b:()=>`<div class="term" id="tm"></div>`,init:w=>{const t=$('#tm',w);let s='C:\\&gt; stack --list\n\n'+STACK.map(([a,b])=>`<span class="k">${a.padEnd(15)}</span> ${b}`).join('\n')+'\n\nC:\\&gt; _';t.innerHTML='';let i=0;(function f(){t.innerHTML=s.slice(0,i+=6);if(i<s.length)setTimeout(f,12)})()}},
+ contact:{i:'📬',t:'Contact Me',w:480,h:440,b:()=>`<h2>📬 Let's talk</h2><p>Tell me about your applications and pain points. I reply within [24 hours] with next steps.</p>
+  <form id="cf"><p><input name="n" placeholder="Your name" required style="width:100%;padding:5px;border:2px inset #fff"></p>
+  <p><input name="e" type="email" placeholder="Your email" required style="width:100%;padding:5px;border:2px inset #fff"></p>
+  <p><textarea name="m" rows="4" placeholder="What do you need support with?" required style="width:100%;padding:5px;border:2px inset #fff;font:inherit"></textarea></p>
+  <button class="b98">Send ✉</button> <a class="link" href="${ME.cal}" target="_blank" rel="noopener">📅 Book a free 20-min call</a></form>
+  <p style="margin-top:10px">Or email <a href="mailto:${ME.email}">${ME.email}</a></p>`,init:w=>{$('#cf',w).onsubmit=e=>{e.preventDefault();const f=e.target;location.href=`mailto:${ME.email}?subject=${encodeURIComponent('Support enquiry from '+f.n.value)}&body=${encodeURIComponent(f.m.value+'\n\n'+f.n.value+' <'+f.e.value+'>')}`}}},
+ bin:{i:'🗑',t:'Recycle Bin',w:360,h:220,b:()=>`<p style="text-align:center;margin-top:30px">🗑 Recycle Bin is empty.<br>Unlike my ticket backlog.</p>`}
+};
+
+/* ---- window manager ---- */
+const wins={};let z=10;
+const front=id=>{Object.entries(wins).forEach(([k,v])=>{v.el.classList.toggle('active',k===id);v.btn.classList.toggle('on',k===id)});wins[id].el.style.zIndex=++z;wins[id].el.hidden=false};
+function openApp(id){
+ if(wins[id])return front(id);
+ const a=APPS[id],n=Object.keys(wins).length,el=document.createElement('div');el.className='win';
+ el.style.cssText=`width:${a.w}px;height:${a.h}px;left:${110+n*28}px;top:${24+n*28}px`;
+ el.innerHTML=`<div class="tb"><span>${a.i} ${a.t}</span><button data-a="min">_</button><button data-a="max">□</button><button data-a="x">✕</button></div><div class="wb">${a.b()}</div>`;
+ $('#desk').append(el);
+ const btn=document.createElement('button');btn.className='b98 tbtn';btn.textContent=a.i+' '+a.t;btn.onclick=()=>el.hidden||el.classList.contains('active')?(el.hidden=!el.hidden,el.hidden||front(id)):front(id);$('#tasks').append(btn);
+ wins[id]={el,btn};a.init&&a.init(el);front(id);
+ el.onmousedown=()=>front(id);
+ el.querySelector('.tb').onclick=e=>{const k=e.target.dataset.a;if(k==='x'){el.remove();btn.remove();delete wins[id]}else if(k==='min')el.hidden=true;else if(k==='max')el.classList.toggle('max')};
+ el.querySelector('.tb').ondblclick=e=>{if(!e.target.dataset.a)el.classList.toggle('max')};
+ drag(el);
+}
+function drag(el){const h=el.querySelector('.tb');h.onpointerdown=e=>{if(e.target.dataset.a||el.classList.contains('max'))return;const dx=e.clientX-el.offsetLeft,dy=e.clientY-el.offsetTop;h.setPointerCapture(e.pointerId);
+ h.onpointermove=m=>{el.style.left=Math.max(-el.offsetWidth+80,m.clientX-dx)+'px';el.style.top=Math.max(0,m.clientY-dy)+'px'};h.onpointerup=()=>{h.onpointermove=h.onpointerup=null}}}
+
+/* ---- desktop, start menu, clock ---- */
+$('#icons').innerHTML=Object.entries(APPS).map(([k,a])=>`<div class="ico" data-k="${k}"><i>${a.i}</i>${a.t}</div>`).join('');
+$('#icons').onclick=e=>{const i=e.target.closest('.ico');document.querySelectorAll('.ico').forEach(x=>x.classList.toggle('sel',x===i))};
+$('#icons').ondblclick=e=>{const i=e.target.closest('.ico');i&&openApp(i.dataset.k)};
+$('#icons').addEventListener('touchend',e=>{const i=e.target.closest('.ico');i&&openApp(i.dataset.k)});
+$('#menu').innerHTML=Object.entries(APPS).filter(([k])=>k!=='bin').map(([k,a])=>`<div data-k="${k}">${a.i} ${a.t}</div>`).join('')+`<hr><div data-k="restart">🔄 Restart…</div>`;
+$('#start').onclick=e=>{e.stopPropagation();$('#menu').style.display=$('#menu').style.display==='block'?'none':'block'};
+$('#menu').onclick=e=>{const k=e.target.closest('div')?.dataset.k;if(k==='restart')location.reload();else if(k)openApp(k)};
+document.onclick=()=>$('#menu').style.display='none';
+const tick=()=>$('#clock').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});tick();setInterval(tick,3e4);
+
+/* ---- boot -> login -> desktop (skippable; remembered per session) ---- */
+function desktop(){$('#boot').remove();$('#login').remove();if(!sessionStorage.seen){setTimeout(()=>openApp('resume'),400)}try{sessionStorage.seen=1}catch(e){}}
+function login(){$('#boot').style.display='none';$('#login').style.display='grid'}
+$('#ok').onclick=$('#no').onclick=desktop;
+(function(){let seen=false;try{seen=sessionStorage.seen}catch(e){}
+ if(seen)return desktop();
+ const L=['Pentium-S CPU at 233MHz','Memory Test : 65536K OK','Detecting IDE Primary Master ... Portfolio HDD','Booting from C: ...'];let i=0;
+ const t=setInterval(()=>{$('#bootlog').textContent+='\n'+(L[i++]||'');if(i>L.length){clearInterval(t);login()}},450);
+ $('#boot').onclick=()=>{clearInterval(t);login()};
+})();
+</script>
+</body>
+</html>
