@@ -41,7 +41,7 @@ Decided by the owner (2026-10-02) — don't change without asking:
 - Headline role stays "Application Support Engineer" (not "Business Analyst").
 - The desktop sticky note says "Open to Business Analyst roles"; the owner accepted that this is publicly visible.
 - Experience is stated as "2 years full time" (the owner's wording), not "2+" or a figure computed from the Jan 2023 start date.
-- Naming Baton's bank clients (JPMorgan, Citi, HSBC, Wells Fargo) is fine.
+- Naming Baton's bank clients (JPMorgan, Citi, HSBC, Goldman Sachs) is fine.
 
 Still open:
 - Resume PDF download: the owner's PDF includes their phone number; needs a phone-free version in `public/resume.pdf`, then set `ME.pdf = '/resume.pdf'`.

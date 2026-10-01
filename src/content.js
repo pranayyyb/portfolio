@@ -21,11 +21,11 @@ export const RESUME = {
     ['Tier-1', 'global bank clients'],
   ],
   about:
-    "I'm a BBA graduate with 2 years of full-time application support experience at Baton Systems, a global FinTech firm, working directly with Tier-1 bank clients including JPMorgan, Citi, HSBC and Wells Fargo. I document production incidents, run root cause analysis, gather requirements from cross-functional stakeholders and turn technical findings into clear business narratives. That mix of analysis and client-facing communication is what I bring to Business Analyst work at the intersection of technology and financial operations.",
+    "I'm a BBA graduate with 2 years of full-time application support experience at Baton Systems, a global FinTech firm, working directly with Tier-1 bank clients including JPMorgan, Citi, HSBC and Goldman Sachs. I document production incidents, run root cause analysis, gather requirements from cross-functional stakeholders and turn technical findings into clear business narratives. That mix of analysis and client-facing communication is what I bring to Business Analyst work at the intersection of technology and financial operations.",
   jobs: [
     {
       role: 'Application Support Engineer', company: 'Baton Systems', dates: 'Jan 2023 – Present',
-      note: 'FinTech post-trade settlements platform. Clients include JPMorgan, Citi, HSBC and Wells Fargo ($20–30B in daily asset settlements).',
+      note: 'FinTech post-trade settlements platform. Clients include JPMorgan, Citi, HSBC and Goldman Sachs ($20–30B in daily asset settlements).',
       points: [
         'Primary liaison between internal engineering teams and Tier-1 bank clients for production incidents, gathering, clarifying and communicating requirements across technical and non-technical stakeholders.',
         'Authored structured Root Cause Analysis (RCA) documents, translating complex system failures into clear, actionable findings for senior management and client teams.',
