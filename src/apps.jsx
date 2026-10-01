@@ -7,7 +7,7 @@ function Resume({ open }) {
   return (
     <>
       <h2>{ME.name}</h2>
-      <p><b>{ME.role}</b> · {ME.city} · {ME.email}</p>
+      <p><b>{ME.role}</b> · {ME.city} · {ME.email}<br />{RESUME.tagline}</p>
       <div className="stats">
         {RESUME.stats.map(([n, label]) => <div key={label}><b>{n}</b>{label}</div>)}
       </div>
@@ -17,15 +17,20 @@ function Resume({ open }) {
       {RESUME.jobs.map((j, i) => (
         <p key={i}>
           <b>{j.role}, {j.company}</b> — {j.dates}
+          {j.note && <><br /><i>{j.note}</i></>}
           {j.points.map((pt, k) => <span key={k}><br />• {pt}</span>)}
         </p>
       ))}
-      <h3>Certifications</h3>
-      <p>{RESUME.certs.join(' · ')}</p>
-      <div className="note">“{RESUME.quote.text}” — {RESUME.quote.by}</div>
+      {RESUME.sections.map(s => (
+        <div key={s.title}>
+          <h3>{s.title}</h3>
+          <p>{s.items.map((it, k) => <span key={k}>{k > 0 && <br />}• {it}</span>)}</p>
+        </div>
+      ))}
+      {RESUME.quote && <div className="note">“{RESUME.quote.text}” — {RESUME.quote.by}</div>}
       <p style={{ marginTop: 12 }}>
         {ME.pdf && <a className="link" href={ME.pdf} download>⬇ Download PDF</a>}
-        <button className="link" onClick={() => open('contact')}>Hire me →</button>
+        <button className="link" onClick={() => open('contact')}>Get in touch →</button>
       </p>
     </>
   )
@@ -49,15 +54,15 @@ function Projects({ open }) {
           <>
             <button className="b98 back" onClick={() => setSel(null)}>← Back to Projects</button>
             <h2>📁 {p.name}</h2>
-            <p style={{ color: '#666' }}>Type: Case study</p>
+            <p style={{ color: '#666' }}>Type: Work highlight</p>
             <span className="chip good">{p.result}</span>
             <h3>Description</h3>
             <p>{p.desc}</p>
-            <h3>Technologies used</h3>
+            <h3>Skills and tools</h3>
             {p.tech.map(t => <span className="chip" key={t}>{t}</span>)}
-            {p.link && <><h3>Links</h3><a className="link" href={p.link} target="_blank" rel="noopener">Case study</a></>}
+            {p.link && <><h3>Links</h3><a className="link" href={p.link} target="_blank" rel="noopener">Read more</a></>}
             <div className="note">
-              <b>Note:</b> Need results like this? <button className="a" onClick={() => open('contact')}>Contact me</button>.
+              <b>Note:</b> Want to hear more about this? <button className="a" onClick={() => open('contact')}>Contact me</button>.
             </div>
           </>
         ) : (
@@ -74,7 +79,7 @@ function Projects({ open }) {
 
 const stackOut = STACK.map(([a, b]) => <div key={a}><span className="k">{a.padEnd(15)}</span> {b}</div>)
 const COMMANDS = {
-  help: () => 'stack      list my tech stack\nprojects   list case studies and results\nwhoami     who is this\ncontact    how to reach me\nopen X     open resume | projects | contact\ndate       current date\nclear      clear the screen',
+  help: () => 'stack      list my skills and tools\nprojects   list work highlights\nwhoami     who is this\ncontact    how to reach me\nopen X     open resume | projects | contact\ndate       current date\nclear      clear the screen',
   stack: () => stackOut,
   projects: () => PROJECTS.map(p => `${p.name.padEnd(32)} ${p.result}`).join('\n'),
   whoami: () => `${ME.name} — ${ME.role}, ${ME.city}`,
@@ -122,20 +127,22 @@ function Contact() {
   const submit = e => {
     e.preventDefault()
     const f = e.target
-    location.href = `mailto:${ME.email}?subject=${encodeURIComponent('Support enquiry from ' + f.n.value)}&body=${encodeURIComponent(f.m.value + '\n\n' + f.n.value + ' <' + f.e.value + '>')}`
+    location.href = `mailto:${ME.email}?subject=${encodeURIComponent('Portfolio enquiry from ' + f.n.value)}&body=${encodeURIComponent(f.m.value + '\n\n' + f.n.value + ' <' + f.e.value + '>')}`
   }
   return (
     <>
       <h2>📬 Let's talk</h2>
-      <p>Tell me about your applications and pain points. I reply within {ME.replyTime} with next steps.</p>
+      <p>Have a role, a project or a question? Send me a message.{ME.replyTime && ` I reply within ${ME.replyTime}.`}</p>
       <form className="cf" onSubmit={submit}>
         <p><input name="n" placeholder="Your name" aria-label="Your name" required /></p>
         <p><input name="e" type="email" placeholder="Your email" aria-label="Your email" required /></p>
-        <p><textarea name="m" rows="4" placeholder="What do you need support with?" aria-label="Message" required /></p>
+        <p><textarea name="m" rows="4" placeholder="Your message" aria-label="Message" required /></p>
         <button className="b98">Send ✉</button>{' '}
-        <a className="link" href={ME.calendar} target="_blank" rel="noopener">📅 Book a free 20-min call</a>
+        {ME.calendar && <a className="link" href={ME.calendar} target="_blank" rel="noopener">📅 Book a call</a>}
       </form>
-      <p style={{ marginTop: 10 }}>Or email <a href={`mailto:${ME.email}`}>{ME.email}</a></p>
+      <p style={{ marginTop: 10 }}>
+        Or email <a href={`mailto:${ME.email}`}>{ME.email}</a> · <a href={ME.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      </p>
     </>
   )
 }
@@ -145,7 +152,7 @@ const Bin = () => <p style={{ textAlign: 'center', marginTop: 30 }}>🗑 Recycle
 export const APPS = {
   resume: { icon: '📄', title: 'Resume.doc', w: 560, h: 460, Body: Resume },
   projects: { icon: '📁', title: 'My Projects', w: 700, h: 480, Body: Projects },
-  stack: { icon: '⌨', title: 'Tech Stack', w: 560, h: 380, Body: Terminal },
+  stack: { icon: '⌨', title: 'Skills', w: 640, h: 400, Body: Terminal },
   contact: { icon: '📬', title: 'Contact Me', w: 480, h: 440, Body: Contact },
   bin: { icon: '🗑', title: 'Recycle Bin', w: 360, h: 220, Body: Bin },
 }

@@ -1,6 +1,6 @@
 # Portfolio — context for future chats
 
-Pranay's personal portfolio: a Windows 98-style desktop (boot screen → login → desktop with draggable windows) for an **Application Support Engineer**. Built with React 19 + Vite 8. No other runtime dependencies.
+Pranay Bathija's personal portfolio: a Windows 98-style desktop (boot screen → login → desktop with draggable windows). Pranay is an **Application Support Engineer** at a FinTech firm, moving toward Business Analyst roles. Built with React 19 + Vite 8. No other runtime dependencies.
 
 **The owner does not code.** Do the work end to end (install, run, verify) and explain results in plain language. Don't ask them to edit code or run multi-step terminal commands.
 
@@ -30,12 +30,18 @@ Pranay's personal portfolio: a Windows 98-style desktop (boot screen → login �
 
 Done: full React port of the original page, plus an interactive terminal (`help`, `stack`, `projects`, `whoami`, `contact`, `open <app>`, `clear`), resizable windows, keyboard-accessible icons/menus, phone layout (windows go full-screen under 700px). Verified in headless Chrome with no console errors.
 
-**Not done yet — needs the owner's real details.** `src/content.js` still has placeholders in `[square brackets]`:
-- name, city, email, LinkedIn / GitHub / Calendly URLs, reply time
-- resume stats, About extra lines, job history, certifications, testimonial quote
-- the six projects are sample case studies — confirm or replace with real ones; `link` is empty so the "Case study" button is hidden
-- resume PDF: drop the file in `public/resume.pdf` and set `ME.pdf = '/resume.pdf'` to show the download button
-- meta description in `index.html`
+**Content filled in from the owner's resume (2026-10-02).** `src/content.js` now holds real details: name, Chennai, email, LinkedIn, GitHub, Baton Systems + two internships, education, achievements, in-progress certifications, skills. The template's sample projects and invented metrics were removed; "My Projects" now shows eight work highlights taken from resume bullets. The "Tech Stack" app was renamed "Skills".
+
+Content rules:
+- **Only state what the resume supports.** No invented numbers, clients, testimonials or outcomes. The one figure in use is "$20–30B in daily settlements"; "2+ years" is the resume's wording.
+- **Phone number is deliberately not on the site or in this public repo.** Don't add it without the owner asking.
+- Optional fields hide their UI when empty: `ME.calendar` (Book a call), `ME.replyTime`, `ME.pdf` (Download PDF), `RESUME.quote` (testimonial), project `link`.
+
+Open questions for the owner:
+- Headline role is "Application Support Engineer" (current job title). The resume's headline is "Business Analyst"; the owner is positioning for BA roles and may want the site to lead with that.
+- The desktop sticky note says "Let's connect". It could say "Open to Business Analyst roles", but that is public and visible to a current employer, so the owner must decide.
+- Resume says "2+ years" but Jan 2023 → now is longer; owner may want to update.
+- Resume PDF download: the owner's PDF includes their phone number; needs a phone-free version in `public/resume.pdf`, then set `ME.pdf = '/resume.pdf'`.
 
 Also not done: deployment/hosting, custom domain. The contact form opens the visitor's email app (`mailto:`); there is no backend.
 
@@ -43,7 +49,7 @@ Also not done: deployment/hosting, custom domain. The contact form opens the vis
 
 - Public repo: https://github.com/pranayyyb/portfolio (branch `main`, remote `origin`).
 - The GitHub CLI is installed at `~/.local/bin/gh` (not on PATH — call it by full path) and is logged in as `pranayyyb`. `git push` works over HTTPS through it.
-- Commit author is set for this repo only: "Pranay Bathija" (guessed from the email, not confirmed) / pranay.bathija25@gmail.com. There is no global git identity.
+- Commit author is set for this repo only: "Pranay Bathija" / pranay.bathija25@gmail.com. There is no global git identity.
 - The repo is public: never commit secrets, and ask before pushing anything personal the owner hasn't approved.
 
 ## Decisions and conventions

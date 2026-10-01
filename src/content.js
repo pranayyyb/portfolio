@@ -1,51 +1,101 @@
-/* ---- All portfolio text lives here. Anything in [square brackets] is a placeholder to replace. ---- */
+/* ---- All portfolio text lives here. Source of truth: Pranay's resume. Don't add claims or numbers that aren't in it. ---- */
 
 export const ME = {
-  name: '[Your Name]',
+  name: 'Pranay Bathija',
   role: 'Application Support Engineer',
-  city: '[City]',
-  email: 'you@example.com',
-  linkedin: 'https://linkedin.com/in/[you]',
-  github: 'https://github.com/[you]',
-  calendar: 'https://calendly.com/[you]',
-  replyTime: '[24 hours]',
+  city: 'Chennai, India',
+  email: 'pranay.bathija25@gmail.com',
+  linkedin: 'https://linkedin.com/in/pranaybathija',
+  github: 'https://github.com/pranayyyb',
+  calendar: '', // booking link (e.g. Calendly); leave '' to hide the "Book a call" button
+  replyTime: '', // e.g. '24 hours'; leave '' to make no promise
   pdf: '', // put resume.pdf in /public and set this to '/resume.pdf' to show the download button
+  cta: { title: "📬 Let's connect", text: 'Click here to get in touch.' }, // sticky note on the desktop
 }
 
 export const RESUME = {
+  tagline: 'FinTech Operations · Business Analysis · Stakeholder Management',
   stats: [
-    ['[6+]', 'yrs in app support'],
-    ['[2,000+]', 'incidents resolved'],
-    ['[99%]', 'SLA compliance'],
+    ['2+', 'yrs in app support'],
+    ['$20–30B', 'daily settlements supported'],
+    ['Tier-1', 'global bank clients'],
   ],
   about:
-    "I'm the engineer teams call when production breaks. I triage, diagnose and fix issues, then remove the root cause so they don't return. [Add 1–2 lines on your domain: fintech, SaaS, healthcare…]",
+    "I'm a BBA graduate with 2+ years in application support at Baton Systems, a global FinTech firm, working directly with Tier-1 bank clients including JPMorgan, Citi, HSBC and Wells Fargo. I document production incidents, run root cause analysis, gather requirements from cross-functional stakeholders and turn technical findings into clear business narratives. That mix of analysis and client-facing communication is what I bring to Business Analyst work at the intersection of technology and financial operations.",
   jobs: [
-    { role: '[Role]', company: '[Company]', dates: '[Dates]', points: ['[Achievement with a number]', '[Achievement with a number]'] },
-    { role: '[Role]', company: '[Company]', dates: '[Dates]', points: ['[Achievement with a number]'] },
+    {
+      role: 'Application Support Engineer', company: 'Baton Systems', dates: 'Jan 2023 – Present',
+      note: 'FinTech post-trade settlements platform. Clients include JPMorgan, Citi, HSBC and Wells Fargo ($20–30B in daily asset settlements).',
+      points: [
+        'Primary liaison between internal engineering teams and Tier-1 bank clients for production incidents, gathering, clarifying and communicating requirements across technical and non-technical stakeholders.',
+        'Authored structured Root Cause Analysis (RCA) documents, translating complex system failures into clear, actionable findings for senior management and client teams.',
+        'Documented and maintained operational runbooks and process workflows, reducing average incident resolution time and improving onboarding speed for new engineers.',
+        'Analysed recurring ticket trend data across multiple client environments to identify upstream process gaps early, reducing escalation frequency.',
+        'Coordinated with DevOps, QA and product teams on Kubernetes/EKS environments, translating business-side incidents into technical requirements and back.',
+        'Managed SLA compliance tracking for critical financial infrastructure, with regular status reports to client stakeholders at major global banks.',
+      ],
+    },
+    {
+      role: 'Digital Marketing Intern', company: "Nester's Hub", dates: '2022 – 2023',
+      points: [
+        'Conducted competitor and market research, producing structured reports that informed quarterly campaign and content strategy.',
+        'Analysed campaign performance data (ROAS, CPL, CTR) in Meta Ads Manager and Google Analytics and presented actionable insights to stakeholders.',
+        'Managed client relationships and prospecting outreach, improving pipeline velocity and driving repeat engagement from existing accounts.',
+        'Ran A/B tests on ad creatives and landing pages and translated the results into revised campaign briefs.',
+      ],
+    },
+    {
+      role: 'Digital Marketing Intern', company: 'Ullas Trust (NGO)', dates: '2021 – 2022',
+      points: [
+        'Managed paid digital campaigns on a constrained NGO budget, meeting awareness and outreach goals through data-driven optimisation.',
+        'Implemented on-page and off-page SEO improvements, improving search visibility.',
+      ],
+    },
   ],
-  certs: ['[ITIL 4 Foundation]', '[AWS Cloud Practitioner]'],
-  quote: {
-    text: '[Short client or manager quote about fast resolution and calm communication.]',
-    by: '[Name, Title, Company]',
-  },
+  sections: [
+    {
+      title: 'Education',
+      items: [
+        "Bachelor of Business Administration (BBA), St. Joseph's College of Commerce, Bangalore — 2021 – 2024",
+        'Specialisation: Marketing & Business Management',
+        'Captain, eSports Team · Member: Finance Club, Quiz Club, Business Team',
+        '1st Place, Inter-Collegiate Marketing Fest (all Bangalore colleges): live campaign strategy and pitch presentation',
+      ],
+    },
+    {
+      title: 'Achievements',
+      items: [
+        'National eSports Athlete of the Year, 2019 & 2020 consecutively. One of fewer than 10 players recognised at national level in India across both years.',
+        'Supported live financial infrastructure processing $20–30B in daily settlements at Baton Systems.',
+      ],
+    },
+    {
+      title: 'Certifications (in progress)',
+      items: [
+        'Prompt Engineering · Anthropic Claude (Claude Code)',
+        'Google Analytics 4 Certification · Google Skillshop',
+        'Meta Blueprint: Digital Marketing Associate · Meta',
+      ],
+    },
+  ],
+  quote: null, // { text: '…', by: 'Name, Title, Company' } — only add a real testimonial
 }
 
-// link: URL of a case study; leave '' to hide the button
+// Work highlights. result = short outcome chip. link: URL to a write-up; leave '' to hide the button
 export const PROJECTS = [
-  { name: 'Payment API Stabilisation', desc: 'Recurring outages on a payments API caused failed checkouts. I traced the root cause to connection-pool exhaustion, fixed it, and added alerting. Repeat incidents dropped 64% and MTTR fell from 2h to 20m.', tech: ['Splunk', 'SQL', 'Linux', 'ServiceNow'], result: '−64% repeat incidents', link: '' },
-  { name: 'Ticket Triage Automation', desc: 'Wrote runbooks and scripts that auto-classify and resolve the top 10 recurring tickets, freeing the team for real incidents.', tech: ['Python', 'Bash', 'Jira'], result: '40% fewer tickets', link: '' },
-  { name: 'Monitoring & Alerting Overhaul', desc: 'Replaced noisy alerts with actionable, severity-based ones with on-call runbooks.', tech: ['Datadog', 'PagerDuty', 'Grafana'], result: '−70% alert noise', link: '' },
-  { name: 'Database Performance Tuning', desc: 'Found slow queries via log analysis and tuned indexes for a reporting app.', tech: ['SQL', 'Oracle', 'AWR'], result: 'Reports 8× faster', link: '' },
-  { name: 'Release & Deployment Support', desc: 'Supported weekly releases with smoke tests, rollback plans and post-deploy verification.', tech: ['CI/CD', 'Jenkins', 'Bash'], result: '0 failed releases / 6 mo', link: '' },
-  { name: 'Knowledge Base Rebuild', desc: 'Audited and rewrote support documentation so L1 could resolve more without escalating.', tech: ['Confluence', 'Runbooks'], result: 'L1 resolution +25%', link: '' },
+  { name: 'Tier-1 Bank Incident Liaison', desc: 'At Baton Systems I am the primary liaison between internal engineering teams and Tier-1 bank clients during production incidents: gathering, clarifying and communicating requirements across technical and non-technical stakeholders.', tech: ['Client Communication', 'Escalation Handling', 'JIRA'], result: 'Tier-1 bank clients', link: '' },
+  { name: 'Root Cause Analysis Reports', desc: 'Structured RCA documents for production incidents that translate complex system failures into clear, actionable findings for senior management and client teams.', tech: ['Root Cause Analysis', 'Confluence', 'Executive Reporting'], result: 'Clear findings for leadership', link: '' },
+  { name: 'Runbooks & Process Workflows', desc: 'Documented and maintained operational runbooks and process workflows, reducing average incident resolution time and improving onboarding speed for new engineers.', tech: ['Process Documentation', 'Confluence'], result: 'Faster incident resolution', link: '' },
+  { name: 'Ticket Trend Analysis', desc: 'Analysed recurring ticket trend data across multiple client environments to spot upstream process gaps early, enabling intervention before issues escalated.', tech: ['JIRA', 'Gap Analysis'], result: 'Fewer escalations', link: '' },
+  { name: 'SLA Compliance Reporting', desc: 'Tracked SLA compliance for critical financial infrastructure and produced regular status reports communicated directly to client stakeholders at major global banks.', tech: ['SLA Management', 'Executive Reporting'], result: 'Regular client status reports', link: '' },
+  { name: 'EKS Delivery Coordination', desc: 'Coordinated with DevOps, QA and product teams on Kubernetes/EKS environments, translating business-side incidents into technical requirements and back across the software delivery lifecycle.', tech: ['Kubernetes/EKS', 'Cross-functional Coordination'], result: 'Business ↔ technical translation', link: '' },
+  { name: 'Campaign Performance Analysis', desc: "At Nester's Hub I analysed campaign performance data (ROAS, CPL, CTR), ran A/B tests on ad creatives and landing pages, and turned the findings into revised campaign briefs.", tech: ['Meta Ads Manager', 'Google Analytics', 'A/B Testing'], result: 'Insights for stakeholders', link: '' },
+  { name: 'Inter-Collegiate Marketing Fest', desc: 'Live campaign strategy and pitch presentation, competing against colleges from across Bangalore.', tech: ['Campaign Strategy', 'Pitching'], result: '1st place', link: '' },
 ]
 
 export const STACK = [
-  ['Monitoring', 'Splunk, Datadog, Grafana, Nagios'],
-  ['Ticketing', 'ServiceNow, Jira Service Mgmt, Zendesk'],
-  ['Databases', 'SQL, Oracle, PostgreSQL, MySQL'],
-  ['OS / Scripting', 'Linux, Windows Server, Bash, Python, PowerShell'],
-  ['APIs / Cloud', 'REST, Postman, AWS, Azure'],
-  ['Practices', 'ITIL, RCA, runbooks, SLA mgmt, on-call'],
+  ['Analysis', 'Requirements Gathering, Root Cause Analysis, Process Documentation, Gap Analysis, User Story Writing'],
+  ['Stakeholders', 'Client Communication, Cross-functional Coordination, Executive Reporting, SLA Management, Escalation Handling'],
+  ['Domain', 'Post-Trade Settlements, Collateral Management, Financial Infrastructure, Trading Workflows, Incident Lifecycle'],
+  ['Tools & Data', 'JIRA, Confluence, Kubernetes/EKS, Google Analytics 4, Meta Ads Manager, Excel, Canva'],
 ]

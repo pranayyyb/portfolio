@@ -116,8 +116,8 @@ function Desktop({ live, first }) {
           ))}
         </div>
         <button id="cta" onClick={() => open('contact')}>
-          <b>📬 Now accepting new support engagements</b>
-          Click here to get in touch — I reply within {ME.replyTime}.
+          <b>{ME.cta.title}</b>
+          {ME.cta.text}
         </button>
         {s.wins.map(w => {
           const { Body } = APPS[w.id]
@@ -139,7 +139,7 @@ function Desktop({ live, first }) {
           <span>🪟</span>Start
         </button>
         <div className="sep" />
-        <a className="b98 tbtn hide-m" href={`mailto:${ME.email}?subject=Support%20enquiry`}>✉ Email</a>
+        <a className="b98 tbtn hide-m" href={`mailto:${ME.email}?subject=Portfolio%20enquiry`}>✉ Email</a>
         <a className="b98 tbtn hide-m" href={ME.linkedin} target="_blank" rel="noopener">in LinkedIn</a>
         <a className="b98 tbtn hide-m" href={ME.github} target="_blank" rel="noopener">⌥ GitHub</a>
         <div className="sep" />
