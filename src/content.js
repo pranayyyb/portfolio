@@ -10,18 +10,18 @@ export const ME = {
   calendar: '', // booking link (e.g. Calendly); leave '' to hide the "Book a call" button
   replyTime: '', // e.g. '24 hours'; leave '' to make no promise
   pdf: '', // put resume.pdf in /public and set this to '/resume.pdf' to show the download button
-  cta: { title: "📬 Let's connect", text: 'Click here to get in touch.' }, // sticky note on the desktop
+  cta: { title: '📬 Open to Business Analyst roles', text: 'Click here to get in touch.' }, // sticky note on the desktop
 }
 
 export const RESUME = {
   tagline: 'FinTech Operations · Business Analysis · Stakeholder Management',
   stats: [
-    ['2+', 'yrs in app support'],
+    ['2', 'yrs full-time in app support'],
     ['$20–30B', 'daily settlements supported'],
     ['Tier-1', 'global bank clients'],
   ],
   about:
-    "I'm a BBA graduate with 2+ years in application support at Baton Systems, a global FinTech firm, working directly with Tier-1 bank clients including JPMorgan, Citi, HSBC and Wells Fargo. I document production incidents, run root cause analysis, gather requirements from cross-functional stakeholders and turn technical findings into clear business narratives. That mix of analysis and client-facing communication is what I bring to Business Analyst work at the intersection of technology and financial operations.",
+    "I'm a BBA graduate with 2 years of full-time application support experience at Baton Systems, a global FinTech firm, working directly with Tier-1 bank clients including JPMorgan, Citi, HSBC and Wells Fargo. I document production incidents, run root cause analysis, gather requirements from cross-functional stakeholders and turn technical findings into clear business narratives. That mix of analysis and client-facing communication is what I bring to Business Analyst work at the intersection of technology and financial operations.",
   jobs: [
     {
       role: 'Application Support Engineer', company: 'Baton Systems', dates: 'Jan 2023 – Present',

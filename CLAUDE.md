@@ -33,14 +33,17 @@ Done: full React port of the original page, plus an interactive terminal (`help`
 **Content filled in from the owner's resume (2026-10-02).** `src/content.js` now holds real details: name, Chennai, email, LinkedIn, GitHub, Baton Systems + two internships, education, achievements, in-progress certifications, skills. The template's sample projects and invented metrics were removed; "My Projects" now shows eight work highlights taken from resume bullets. The "Tech Stack" app was renamed "Skills".
 
 Content rules:
-- **Only state what the resume supports.** No invented numbers, clients, testimonials or outcomes. The one figure in use is "$20–30B in daily settlements"; "2+ years" is the resume's wording.
+- **Only state what the resume supports.** No invented numbers, clients, testimonials or outcomes. The one figure in use is "$20–30B in daily settlements".
 - **Phone number is deliberately not on the site or in this public repo.** Don't add it without the owner asking.
 - Optional fields hide their UI when empty: `ME.calendar` (Book a call), `ME.replyTime`, `ME.pdf` (Download PDF), `RESUME.quote` (testimonial), project `link`.
 
-Open questions for the owner:
-- Headline role is "Application Support Engineer" (current job title). The resume's headline is "Business Analyst"; the owner is positioning for BA roles and may want the site to lead with that.
-- The desktop sticky note says "Let's connect". It could say "Open to Business Analyst roles", but that is public and visible to a current employer, so the owner must decide.
-- Resume says "2+ years" but Jan 2023 → now is longer; owner may want to update.
+Decided by the owner (2026-10-02) — don't change without asking:
+- Headline role stays "Application Support Engineer" (not "Business Analyst").
+- The desktop sticky note says "Open to Business Analyst roles"; the owner accepted that this is publicly visible.
+- Experience is stated as "2 years full time" (the owner's wording), not "2+" or a figure computed from the Jan 2023 start date.
+- Naming Baton's bank clients (JPMorgan, Citi, HSBC, Wells Fargo) is fine.
+
+Still open:
 - Resume PDF download: the owner's PDF includes their phone number; needs a phone-free version in `public/resume.pdf`, then set `ME.pdf = '/resume.pdf'`.
 
 Also not done: deployment/hosting, custom domain. The contact form opens the visitor's email app (`mailto:`); there is no backend.
