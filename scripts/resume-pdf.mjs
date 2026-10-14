@@ -22,9 +22,13 @@ try {
   await cmd('Page.enable')
   await cmd('Page.addScriptToEvaluateOnNewDocument', { source: 'sessionStorage.seen = 1' }) // skip the intro
   await cmd('Page.navigate', { url: 'http://localhost:8123/' })
-  await sleep(1500)
-  await cmd('Runtime.evaluate', { expression: "[...document.querySelectorAll('.ico')].find(b => b.textContent.includes('Resume')).dispatchEvent(new MouseEvent('dblclick', { bubbles: true }))" })
-  await sleep(800)
+  const evaluate = async expression => (await cmd('Runtime.evaluate', { expression, returnByValue: true })).result?.result?.value
+  // wait for the desktop, open the resume, wait for its page to render
+  const ready = async (expr, what) => { for (let i = 0; i < 60; i++) { if (await evaluate(expr)) return; await sleep(250) } throw new Error(`timed out waiting for ${what}`) }
+  await ready("!!document.querySelector('.ico')", 'desktop icons')
+  await evaluate("[...document.querySelectorAll('.ico')].find(b => b.textContent.includes('Resume')).dispatchEvent(new MouseEvent('dblclick', { bubbles: true })), true")
+  await ready("!!document.querySelector('.page')", 'resume page')
+  await sleep(500)
   const { result, error } = await cmd('Page.printToPDF', { paperWidth: 8.27, paperHeight: 11.69, printBackground: true, preferCSSPageSize: true })
   if (error) throw new Error(error.message)
   writeFileSync('public/resume.pdf', Buffer.from(result.data, 'base64'))

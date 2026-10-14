@@ -91,7 +91,7 @@ export const STACK = [
   ['Business Analysis', ['Requirements Gathering', 'User Story Writing', 'Gap Analysis', 'Root Cause Analysis', 'Process Documentation']],
   ['Stakeholder Management', ['Client Communication', 'Cross-functional Coordination', 'Executive Reporting', 'Escalation Handling', 'SLA Management']],
   ['FinTech Domain', ['Post-Trade Settlements', 'Collateral Management', 'Trading Workflows', 'Financial Infrastructure', 'Incident Lifecycle']],
-  ['Cloud, DevOps & Tools', ['AWS (S3, IAM, EC2)', 'Docker', 'Kubernetes/EKS', 'CI/CD (GitHub Actions, TeamCity)']],
+  ['Cloud, DevOps & Tools', ['AWS (S3, IAM, EC2)', 'Docker', 'Kubernetes/EKS', 'CI/CD (GitHub Actions, TeamCity)', 'Monitoring (Grafana, Kibana)']],
   ['Tools', ['JIRA', 'Confluence', 'Postman', 'Excel', 'Claude Code', 'VS Code', 'Git/GitHub']],
   ['Marketing & Analytics', ['Google Analytics 4', 'Meta Ads Manager', 'A/B Testing', 'Canva']],
 ]
