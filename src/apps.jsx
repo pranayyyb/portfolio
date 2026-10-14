@@ -3,36 +3,45 @@ import { ME, RESUME, PROJECTS, STACK } from './content.js'
 
 /* Each desktop app is a component that receives open(id) so it can launch other apps. */
 
+const Entry = ({ e }) => (
+  <div className="entry">
+    <div className="hd"><b>{e.role}</b><span className="dim">{e.dates}</span></div>
+    <div className="dim">{e.company}{e.note && <> · {e.note}</>}</div>
+    <ul>{e.points.map((pt, k) => <li key={k}>{pt}</li>)}</ul>
+  </div>
+)
+
 function Resume({ open }) {
   return (
-    <>
+    <div className="cv">
       <h2>{ME.name}</h2>
-      <p><b>{ME.role}</b> · {ME.city} · {ME.email}<br />{RESUME.tagline}</p>
+      <p className="role">{ME.role} · {ME.city}</p>
+      <p className="dim">{RESUME.tagline}</p>
+      <p className="contacts">
+        <a href={`mailto:${ME.email}`}>{ME.email}</a> · <a href={ME.linkedin} target="_blank" rel="noopener">LinkedIn</a> · <a href={ME.github} target="_blank" rel="noopener">GitHub</a>
+      </p>
       <div className="stats">
         {RESUME.stats.map(([n, label]) => <div key={label}><b>{n}</b>{label}</div>)}
       </div>
       <h3>About</h3>
       <p>{RESUME.about}</p>
       <h3>Experience</h3>
-      {RESUME.jobs.map((j, i) => (
-        <p key={i}>
-          <b>{j.role}, {j.company}</b> — {j.dates}
-          {j.note && <><br /><i>{j.note}</i></>}
-          {j.points.map((pt, k) => <span key={k}><br />• {pt}</span>)}
-        </p>
-      ))}
+      {RESUME.jobs.map((j, i) => <Entry key={i} e={j} />)}
+      <h3>Education</h3>
+      {RESUME.education.map((j, i) => <Entry key={i} e={j} />)}
       {RESUME.sections.map(s => (
         <div key={s.title}>
           <h3>{s.title}</h3>
-          <p>{s.items.map((it, k) => <span key={k}>{k > 0 && <br />}• {it}</span>)}</p>
+          <ul>{s.items.map((it, k) => <li key={k}>{it}</li>)}</ul>
         </div>
       ))}
       {RESUME.quote && <div className="note">“{RESUME.quote.text}” — {RESUME.quote.by}</div>}
-      <p style={{ marginTop: 12 }}>
+      <p style={{ marginTop: 16 }}>
         {ME.pdf && <a className="link" href={ME.pdf} download>⬇ Resume (PDF)</a>}
+        <button className="link" onClick={() => open('stack')}>See skills</button>
         <button className="link" onClick={() => open('contact')}>Get in touch →</button>
       </p>
-    </>
+    </div>
   )
 }
 
@@ -76,7 +85,12 @@ function Projects({ open }) {
   )
 }
 
-const stackOut = STACK.map(([a, b]) => <div key={a}><span className="k">{a.padEnd(15)}</span> {b}</div>)
+const stackOut = STACK.map(([group, items]) => (
+  <div key={group} className="grp">
+    <div className="k">[ {group} ]</div>
+    <div className="cols">{items.map(x => <span key={x}>› {x}</span>)}</div>
+  </div>
+))
 const COMMANDS = {
   help: () => 'stack      list my skills and tools\nprojects   list work highlights\nwhoami     who is this\ncontact    how to reach me\nopen X     open resume | projects | contact\ndate       current date\nclear      clear the screen',
   stack: () => stackOut,
@@ -149,9 +163,9 @@ function Contact() {
 const Bin = () => <p style={{ textAlign: 'center', marginTop: 30 }}>🗑 Nothing in here.<br />Nothing gets deleted without a root cause analysis.</p>
 
 export const APPS = {
-  resume: { icon: '📄', title: 'Resume.doc', w: 560, h: 460, Body: Resume },
+  resume: { icon: '📄', title: 'Resume.doc', w: 640, h: 620, Body: Resume },
   projects: { icon: '📁', title: 'My Projects', w: 700, h: 480, Body: Projects },
-  stack: { icon: '⌨', title: 'Skills', w: 640, h: 400, Body: Terminal },
+  stack: { icon: '⌨', title: 'Skills', w: 680, h: 600, Body: Terminal },
   contact: { icon: '📬', title: 'Contact Me', w: 480, h: 440, Body: Contact },
   bin: { icon: '🗑', title: 'Recycle Bin', w: 360, h: 220, Body: Bin },
 }

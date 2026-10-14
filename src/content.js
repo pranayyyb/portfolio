@@ -21,59 +21,60 @@ export const RESUME = {
     ['Tier-1', 'global bank clients'],
   ],
   about:
-    "I'm a BBA graduate with 2 years of full-time application support experience at Baton Systems, a global FinTech firm, working directly with Tier-1 bank clients including JPMorgan, Citi, HSBC and Goldman Sachs. I document production incidents, run root cause analysis, gather requirements from cross-functional stakeholders and turn technical findings into clear business narratives. That mix of analysis and client-facing communication is what I bring to Business Analyst work at the intersection of technology and financial operations.",
+    "BBA graduate with 2 years full time in application support at Baton Systems, a FinTech firm serving Tier-1 banks. I investigate production incidents, write root cause analyses and translate between engineers and clients, and I'm now moving into Business Analyst roles.",
+  // jobs and education share one shape: { role, company, dates, note?, points }
   jobs: [
     {
       role: 'Application Support Engineer', company: 'Baton Systems', dates: 'Jan 2023 – Present',
-      note: 'FinTech post-trade settlements platform. Clients include JPMorgan, Citi, HSBC and Goldman Sachs ($20–30B in daily asset settlements).',
+      note: 'Post-trade settlements platform · clients include JPMorgan, Citi, HSBC and Goldman Sachs',
       points: [
-        'Primary liaison between internal engineering teams and Tier-1 bank clients for production incidents, gathering, clarifying and communicating requirements across technical and non-technical stakeholders.',
-        'Authored structured Root Cause Analysis (RCA) documents, translating complex system failures into clear, actionable findings for senior management and client teams.',
-        'Documented and maintained operational runbooks and process workflows, reducing average incident resolution time and improving onboarding speed for new engineers.',
-        'Analysed recurring ticket trend data across multiple client environments to identify upstream process gaps early, reducing escalation frequency.',
-        'Coordinated with DevOps, QA and product teams on Kubernetes/EKS environments, translating business-side incidents into technical requirements and back.',
-        'Managed SLA compliance tracking for critical financial infrastructure, with regular status reports to client stakeholders at major global banks.',
+        'Primary liaison between engineering teams and Tier-1 bank clients during production incidents.',
+        'Gather, clarify and communicate requirements across technical and non-technical stakeholders.',
+        'Write Root Cause Analysis reports that turn system failures into clear findings for senior management and clients.',
+        'Maintain runbooks and process workflows that cut incident resolution time and speed up onboarding.',
+        'Analyse ticket trends across client environments to catch process gaps before they escalate.',
+        'Coordinate with DevOps, QA and product teams on Kubernetes/EKS environments.',
+        'Track SLA compliance and report status to client stakeholders at major global banks.',
       ],
     },
     {
       role: 'Digital Marketing Intern', company: "Nester's Hub", dates: '2022 – 2023',
       points: [
-        'Conducted competitor and market research, producing structured reports that informed quarterly campaign and content strategy.',
-        'Analysed campaign performance data (ROAS, CPL, CTR) in Meta Ads Manager and Google Analytics and presented actionable insights to stakeholders.',
-        'Managed client relationships and prospecting outreach, improving pipeline velocity and driving repeat engagement from existing accounts.',
-        'Ran A/B tests on ad creatives and landing pages and translated the results into revised campaign briefs.',
+        'Analysed campaign data (ROAS, CPL, CTR) in Meta Ads Manager and Google Analytics and presented insights to stakeholders.',
+        'Ran A/B tests on ads and landing pages and turned the results into revised campaign briefs.',
+        'Produced competitor and market research reports that shaped quarterly campaign strategy.',
+        'Managed client relationships and prospecting outreach to drive repeat engagement.',
       ],
     },
     {
       role: 'Digital Marketing Intern', company: 'Ullas Trust (NGO)', dates: '2021 – 2022',
       points: [
-        'Managed paid digital campaigns on a constrained NGO budget, meeting awareness and outreach goals through data-driven optimisation.',
-        'Implemented on-page and off-page SEO improvements, improving search visibility.',
+        'Ran paid digital campaigns on a tight NGO budget, meeting awareness and outreach goals.',
+        'Improved search visibility through on-page and off-page SEO.',
+      ],
+    },
+  ],
+  education: [
+    {
+      role: 'BBA, Marketing & Business Management', company: "St. Joseph's College of Commerce, Bangalore", dates: '2021 – 2024',
+      points: [
+        '1st place, Inter-Collegiate Marketing Fest (all Bangalore colleges): live campaign strategy and pitch.',
+        'Captain, eSports team · Member of the Finance Club, Quiz Club and Business Team.',
       ],
     },
   ],
   sections: [
     {
-      title: 'Education',
-      items: [
-        "Bachelor of Business Administration (BBA), St. Joseph's College of Commerce, Bangalore — 2021 – 2024",
-        'Specialisation: Marketing & Business Management',
-        'Captain, eSports Team · Member: Finance Club, Quiz Club, Business Team',
-        '1st Place, Inter-Collegiate Marketing Fest (all Bangalore colleges): live campaign strategy and pitch presentation',
-      ],
-    },
-    {
       title: 'Achievements',
       items: [
-        'National eSports Athlete of the Year, 2019 & 2020 consecutively. One of fewer than 10 players recognised at national level in India across both years.',
-        'Supported live financial infrastructure processing $20–30B in daily settlements at Baton Systems.',
+        'National eSports Athlete of the Year, 2019 and 2020: one of fewer than 10 players in India recognised in both years.',
       ],
     },
     {
       title: 'Certifications (in progress)',
       items: [
         'Prompt Engineering · Anthropic Claude (Claude Code)',
-        'Google Analytics 4 Certification · Google Skillshop',
+        'Google Analytics 4 · Google Skillshop',
         'Meta Blueprint: Digital Marketing Associate · Meta',
       ],
     },
@@ -94,8 +95,9 @@ export const PROJECTS = [
 ]
 
 export const STACK = [
-  ['Analysis', 'Requirements Gathering, Root Cause Analysis, Process Documentation, Gap Analysis, User Story Writing'],
-  ['Stakeholders', 'Client Communication, Cross-functional Coordination, Executive Reporting, SLA Management, Escalation Handling'],
-  ['Domain', 'Post-Trade Settlements, Collateral Management, Financial Infrastructure, Trading Workflows, Incident Lifecycle'],
-  ['Tools & Data', 'JIRA, Confluence, Kubernetes/EKS, Google Analytics 4, Meta Ads Manager, Excel, Canva'],
+  ['Business Analysis', ['Requirements Gathering', 'User Story Writing', 'Gap Analysis', 'Root Cause Analysis', 'Process Documentation']],
+  ['Stakeholder Management', ['Client Communication', 'Cross-functional Coordination', 'Executive Reporting', 'Escalation Handling', 'SLA Management']],
+  ['FinTech Domain', ['Post-Trade Settlements', 'Collateral Management', 'Trading Workflows', 'Financial Infrastructure', 'Incident Lifecycle']],
+  ['Tools', ['JIRA', 'Confluence', 'Excel', 'Kubernetes/EKS']],
+  ['Marketing & Analytics', ['Google Analytics 4', 'Meta Ads Manager', 'A/B Testing', 'Canva']],
 ]

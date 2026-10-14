@@ -139,9 +139,11 @@ function Desktop({ live, first }) {
           <span>🪟</span>Start
         </button>
         <div className="sep" />
-        <a className="b98 tbtn hide-m" href={`mailto:${ME.email}?subject=Portfolio%20enquiry`}>📧 Mail</a>
-        <a className="b98 tbtn hide-m" href={ME.linkedin} target="_blank" rel="noopener">🔗 LinkedIn</a>
-        <a className="b98 tbtn hide-m" href={ME.github} target="_blank" rel="noopener">💻 GitHub</a>
+        {/* quick links: icon-only on phones */}
+        <button className="b98 tbtn" title="Resume" onClick={e => { e.stopPropagation(); open('resume') }}>📄<span className="hide-m"> Resume</span></button>
+        <a className="b98 tbtn" title="LinkedIn" href={ME.linkedin} target="_blank" rel="noopener">🔗<span className="hide-m"> LinkedIn</span></a>
+        <a className="b98 tbtn" title="GitHub" href={ME.github} target="_blank" rel="noopener">💻<span className="hide-m"> GitHub</span></a>
+        <a className="b98 tbtn hide-m" title="Email" href={`mailto:${ME.email}?subject=Portfolio%20enquiry`}>📧 Mail</a>
         <div className="sep" />
         <div id="tasks">
           {s.wins.map(w => (
