@@ -80,6 +80,7 @@ button.a{background:none;border:0;padding:0;color:#00e;text-decoration:underline
 #tasks{display:flex;gap:4px;flex:1;min-width:0;overflow:hidden}
 #clock{border:1px inset var(--hi);padding:3px 10px;margin-left:auto}
 a.tbtn{color:#000;text-decoration:none}
+.ql{display:flex;align-items:center;gap:5px}
 #menu{position:fixed;left:2px;bottom:32px;width:210px;background:var(--face);border:2px outset var(--hi);z-index:60}
 #menu button{display:block;width:100%;padding:8px 14px;background:none;border:0;text-align:left}
 #menu button:hover,#menu button:focus-visible{background:var(--title);color:#fff;outline:0}
