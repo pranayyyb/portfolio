@@ -37,7 +37,7 @@ export const RESUME = {
       }],
     },
     {
-      role: 'Digital Marketing Intern', company: "Nester's Hub", place: 'Bengaluru, Karnataka', dates: 'Oct 2023 – Nov 2023',
+      role: 'Intern', company: "Nester's Hub", place: 'Bengaluru, Karnataka', dates: 'Oct 2023 – Nov 2023',
       points: [
         'Analysed campaign data (**ROAS, CPL, CTR**) in **Meta Ads Manager** and **Google Analytics** and presented insights to stakeholders.',
         'Ran **A/B tests** on ads and landing pages and turned the results into revised campaign briefs.',
@@ -46,7 +46,7 @@ export const RESUME = {
       ],
     },
     {
-      role: 'Digital Marketing Intern', company: 'Ullas Trust (NGO)', dates: 'Jul 2022 – Aug 2022',
+      role: 'Marketing Intern', company: 'Ullas Trust (NGO)', place: 'Chennai, Tamil Nadu', dates: 'Jul 2022 – Aug 2022',
       points: [
         'Ran paid digital campaigns on a tight NGO budget, meeting awareness and outreach goals.',
         'Improved search visibility through on-page and off-page SEO.',
@@ -57,7 +57,7 @@ export const RESUME = {
     {
       role: 'BBA, Marketing & Business Management', company: "St. Joseph's College of Commerce", place: 'Bengaluru, Karnataka', dates: 'Aug 2021 – Aug 2024',
       points: [
-        '**1st place**, Inter-Collegiate Marketing Fest (all Bangalore colleges): live campaign strategy and pitch.',
+        '**1st place**, Inter-Collegiate Marketing Fest (all Bengaluru colleges): live campaign strategy and pitch.',
         'Captain, eSports team · Member of the Finance Club, Quiz Club and Business Team.',
       ],
     },
@@ -90,7 +90,7 @@ export const PROJECTS = [
   { name: 'SLA Compliance Reporting', desc: 'Tracked SLA compliance for critical financial infrastructure and produced regular status reports communicated directly to client stakeholders at major global banks.', tech: ['SLA Management', 'Executive Reporting'], result: 'Regular client status reports', link: '' },
   { name: 'EKS Delivery Coordination', desc: 'Coordinated with DevOps, QA and product teams on Kubernetes/EKS environments, translating business-side incidents into technical requirements and back across the software delivery lifecycle.', tech: ['Kubernetes/EKS', 'Cross-functional Coordination'], result: 'Business ↔ technical translation', link: '' },
   { name: 'Campaign Performance Analysis', desc: "At Nester's Hub I analysed campaign performance data (ROAS, CPL, CTR), ran A/B tests on ad creatives and landing pages, and turned the findings into revised campaign briefs.", tech: ['Meta Ads Manager', 'Google Analytics', 'A/B Testing'], result: 'Insights for stakeholders', link: '' },
-  { name: 'Inter-Collegiate Marketing Fest', desc: 'Live campaign strategy and pitch presentation, competing against colleges from across Bangalore.', tech: ['Campaign Strategy', 'Pitching'], result: '1st place', link: '' },
+  { name: 'Inter-Collegiate Marketing Fest', desc: 'Live campaign strategy and pitch presentation, competing against colleges from across Bengaluru.', tech: ['Campaign Strategy', 'Pitching'], result: '1st place', link: '' },
 ]
 
 export const STACK = [
