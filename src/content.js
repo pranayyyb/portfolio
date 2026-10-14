@@ -15,10 +15,13 @@ export const ME = {
 
 export const RESUME = {
   tagline: 'FinTech Operations · Business Analysis · Stakeholder Management',
-  // jobs and education share one shape: { role, company, place?, dates, note?, points }. **text** renders bold.
+  // { company, place?, role, dates, note?, points }. A company with several roles uses roles: [{ role, dates, note?, points }]. **text** renders bold.
+  // Dates and cities from the owner's LinkedIn (2026-10-14).
   jobs: [
     {
-      role: 'Application Support Engineer', company: 'Baton Systems', dates: 'Jan 2023 – Present',
+      company: 'Baton Systems', place: 'Chennai, Tamil Nadu',
+      roles: [{
+      role: 'Application Support Engineer', dates: 'Dec 2024 – Present',
       note: 'Post-trade settlements platform supporting **$20–30B in daily settlements** · clients include JPMorgan, Citi, HSBC and Goldman Sachs',
       points: [
         'Primary liaison between engineering teams and **Tier-1 bank clients** during production incidents.',
@@ -29,9 +32,12 @@ export const RESUME = {
         'Coordinate with DevOps, QA and product teams on **Kubernetes/EKS** environments.',
         'Track **SLA compliance** and report status to client stakeholders at major global banks.',
       ],
+      }, {
+        role: 'Application Support Engineer Intern', dates: 'May 2023 – Jun 2023', points: [],
+      }],
     },
     {
-      role: 'Digital Marketing Intern', company: "Nester's Hub", dates: '2022 – 2023',
+      role: 'Digital Marketing Intern', company: "Nester's Hub", place: 'Bengaluru, Karnataka', dates: 'Oct 2023 – Nov 2023',
       points: [
         'Analysed campaign data (**ROAS, CPL, CTR**) in **Meta Ads Manager** and **Google Analytics** and presented insights to stakeholders.',
         'Ran **A/B tests** on ads and landing pages and turned the results into revised campaign briefs.',
@@ -40,7 +46,7 @@ export const RESUME = {
       ],
     },
     {
-      role: 'Digital Marketing Intern', company: 'Ullas Trust (NGO)', dates: '2021 – 2022',
+      role: 'Digital Marketing Intern', company: 'Ullas Trust (NGO)', dates: 'Jul 2022 – Aug 2022',
       points: [
         'Ran paid digital campaigns on a tight NGO budget, meeting awareness and outreach goals.',
         'Improved search visibility through on-page and off-page SEO.',
@@ -49,7 +55,7 @@ export const RESUME = {
   ],
   education: [
     {
-      role: 'BBA, Marketing & Business Management', company: "St. Joseph's College of Commerce", place: 'Bangalore, Karnataka', dates: '2021 – 2024',
+      role: 'BBA, Marketing & Business Management', company: "St. Joseph's College of Commerce", place: 'Bengaluru, Karnataka', dates: 'Aug 2021 – Aug 2024',
       points: [
         '**1st place**, Inter-Collegiate Marketing Fest (all Bangalore colleges): live campaign strategy and pitch.',
         'Captain, eSports team · Member of the Finance Club, Quiz Club and Business Team.',

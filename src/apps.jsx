@@ -9,9 +9,13 @@ const rich = t => t.split(/\*\*(.+?)\*\*/).map((x, i) => (i % 2 ? <b key={i}>{x}
 const Entry = ({ e, plain }) => (
   <li className="entry">
     <div className="row"><b>{e.company}</b><span>{e.place}</span></div>
-    <div className="row">{plain ? <span>{e.role}</span> : <b>{e.role}</b>}<span>{e.dates}</span></div>
-    {e.note && <div>{rich(e.note)}</div>}
-    <ul>{e.points.map((pt, k) => <li key={k}>{rich(pt)}</li>)}</ul>
+    {(e.roles ?? [e]).map(r => (
+      <div key={r.role} className="role">
+        <div className="row">{plain ? <span>{r.role}</span> : <b>{r.role}</b>}<span>{r.dates}</span></div>
+        {r.note && <div>{rich(r.note)}</div>}
+        {r.points.length > 0 && <ul>{r.points.map((pt, k) => <li key={k}>{rich(pt)}</li>)}</ul>}
+      </div>
+    ))}
   </li>
 )
 
