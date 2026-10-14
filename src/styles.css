@@ -104,8 +104,8 @@ a.tbtn{color:#000;text-decoration:none}
   html,body{height:auto;overflow:visible}
   #bar,#icons,#cta,#menu,.win:not(:has(.word)),.win .tb,.word .menu,.tools{display:none!important}
   #desk,.win,.wb,.word,.scroll{position:static!important;inset:auto!important;width:auto!important;height:auto!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important;overflow:visible!important;resize:none!important;animation:none!important}
-  .page{box-shadow:none;padding:0;max-width:none;font-size:10.5pt}
-  .page .entry ul{font-size:10pt}
+  .page{box-shadow:none;padding:0;max-width:none;font-size:10pt}
+  .page .entry ul{font-size:9.5pt}
   .page h2{margin-top:9px}
   .page li,.page .entry .row{break-inside:avoid}
   .page h2{break-after:avoid}
