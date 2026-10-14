@@ -5,7 +5,7 @@ export const ME = {
   role: 'Application Support Engineer',
   city: 'Chennai, India',
   email: 'pranay.bathija25@gmail.com',
-  linkedin: 'https://linkedin.com/in/pranaybathija',
+  linkedin: 'https://www.linkedin.com/in/pranay-bathija-246312214/',
   github: 'https://github.com/pranayyyb',
   calendar: '', // booking link (e.g. Calendly); leave '' to hide the "Book a call" button
   replyTime: '', // e.g. '24 hours'; leave '' to make no promise

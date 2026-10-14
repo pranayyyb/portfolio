@@ -35,6 +35,6 @@ try {
   console.log('wrote public/resume.pdf')
 } finally {
   await new Promise(r => { chrome.once('exit', r); chrome.kill() })
-  rmSync(profile, { recursive: true, force: true })
+  rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 })
 }
 process.exit()
