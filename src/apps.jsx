@@ -6,13 +6,24 @@ import { ME, RESUME, PROJECTS, STACK } from './content.js'
 // "**x**" in content renders as bold
 const rich = t => t.split(/\*\*(.+?)\*\*/).map((x, i) => (i % 2 ? <b key={i}>{x}</b> : x))
 
-const Entry = ({ e }) => (
+const Entry = ({ e, plain }) => (
   <li className="entry">
-    <div className="row"><b>{e.company}</b><b>{e.place}</b></div>
-    <div className="row"><b>{e.role}</b><b>{e.dates}</b></div>
-    {e.note && <div><i>{rich(e.note)}</i></div>}
+    <div className="row"><b>{e.company}</b><span>{e.place}</span></div>
+    <div className="row">{plain ? <span>{e.role}</span> : <b>{e.role}</b>}<span>{e.dates}</span></div>
+    {e.note && <div>{rich(e.note)}</div>}
     <ul>{e.points.map((pt, k) => <li key={k}>{rich(pt)}</li>)}</ul>
   </li>
+)
+
+// Word-style document icon (inline SVG, sized by font-size)
+const WordIcon = () => (
+  <svg viewBox="0 0 32 32" width="1em" height="1em" aria-hidden="true" style={{ verticalAlign: '-0.15em' }}>
+    <path d="M8 2h14l7 7v21H8z" fill="#fff" stroke="#555" />
+    <path d="M22 2v7h7" fill="#ddd" stroke="#555" />
+    <path d="M12 14h13M12 18h13M12 22h13M12 26h9" stroke="#9ab" strokeWidth="1.5" />
+    <rect x="2" y="9" width="15" height="15" rx="1.5" fill="#2b579a" />
+    <path d="M4.6 12.5l1.9 8 2-6 2 6 1.9-8" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinejoin="round" />
+  </svg>
 )
 
 // decorative Word 98 chrome; only Print and Download PDF do anything
@@ -32,26 +43,24 @@ function Resume() {
       <div className="scroll">
         <article className="page">
           <h1>{ME.name}</h1>
-          <p className="c">{ME.role} · {ME.city}</p>
+          <p className="c">{ME.city}</p>
           <p className="c links">
             <a href={`mailto:${ME.email}`}>{ME.email}</a>
             <a href={ME.linkedin} target="_blank" rel="noopener">LinkedIn</a>
             <a href={ME.github} target="_blank" rel="noopener">GitHub</a>
           </p>
-          <h2>Summary</h2>
-          <p>{RESUME.about}</p>
+          <h2>Education</h2>
+          <ul>{RESUME.education.map((j, i) => <Entry key={i} e={j} plain />)}</ul>
           <h2>Experience</h2>
           <ul>{RESUME.jobs.map((j, i) => <Entry key={i} e={j} />)}</ul>
-          <h2>Education</h2>
-          <ul>{RESUME.education.map((j, i) => <Entry key={i} e={j} />)}</ul>
-          <h2>Skills</h2>
-          <ul>{STACK.map(([g, items]) => <li key={g}><b>{g}:</b> {items.join(', ')}</li>)}</ul>
           {RESUME.sections.map(s => (
             <div key={s.title}>
               <h2>{s.title}</h2>
-              <ul>{s.items.map((it, k) => <li key={k}>{rich(it)}</li>)}</ul>
+              <ul className="flat">{s.items.map((it, k) => <li key={k}>{rich(it)}</li>)}</ul>
             </div>
           ))}
+          <h2>Skills</h2>
+          <ul className="flat">{STACK.map(([g, items]) => <li key={g}><b>{g}:</b> {items.join(', ')}</li>)}</ul>
           {RESUME.quote && <p><i>“{RESUME.quote.text}” — {RESUME.quote.by}</i></p>}
         </article>
       </div>
@@ -177,7 +186,7 @@ function Contact() {
 const Bin = () => <p style={{ textAlign: 'center', marginTop: 30 }}>🗑 Nothing in here.<br />Nothing gets deleted without a root cause analysis.</p>
 
 export const APPS = {
-  resume: { icon: '📄', title: 'Resume.doc', w: 820, h: 680, Body: Resume },
+  resume: { icon: <WordIcon />, title: 'Resume.doc', w: 820, h: 680, Body: Resume },
   projects: { icon: '📁', title: 'My Projects', w: 700, h: 480, Body: Projects },
   stack: { icon: '⌨', title: 'Skills', w: 680, h: 600, Body: Terminal },
   contact: { icon: '📬', title: 'Contact Me', w: 480, h: 440, Body: Contact },

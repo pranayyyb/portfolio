@@ -15,8 +15,6 @@ export const ME = {
 
 export const RESUME = {
   tagline: 'FinTech Operations · Business Analysis · Stakeholder Management',
-  about:
-    "BBA graduate with 2 years full time in application support at Baton Systems, a FinTech firm serving Tier-1 banks. I investigate production incidents, write root cause analyses and translate between engineers and clients, and I'm now moving into Business Analyst roles.",
   // jobs and education share one shape: { role, company, place?, dates, note?, points }. **text** renders bold.
   jobs: [
     {
