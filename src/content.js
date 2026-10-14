@@ -71,11 +71,11 @@ export const RESUME = {
       ],
     },
     {
-      title: 'Certifications (in progress)',
+      title: 'Certifications',
       items: [
         'Prompt Engineering · Anthropic Claude (Claude Code)',
         'Google Analytics 4 · Google Skillshop',
-        'Meta Blueprint: Digital Marketing Associate · Meta',
+        'Meta Blueprint: Digital Marketing Associate · Meta (in progress)',
       ],
     },
   ],
