@@ -3,44 +3,58 @@ import { ME, RESUME, PROJECTS, STACK } from './content.js'
 
 /* Each desktop app is a component that receives open(id) so it can launch other apps. */
 
+// "**x**" in content renders as bold
+const rich = t => t.split(/\*\*(.+?)\*\*/).map((x, i) => (i % 2 ? <b key={i}>{x}</b> : x))
+
 const Entry = ({ e }) => (
-  <div className="entry">
-    <div className="hd"><b>{e.role}</b><span className="dim">{e.dates}</span></div>
-    <div className="dim">{e.company}{e.note && <> · {e.note}</>}</div>
-    <ul>{e.points.map((pt, k) => <li key={k}>{pt}</li>)}</ul>
-  </div>
+  <li className="entry">
+    <div className="row"><b>{e.company}</b><b>{e.place}</b></div>
+    <div className="row"><b>{e.role}</b><b>{e.dates}</b></div>
+    {e.note && <div><i>{rich(e.note)}</i></div>}
+    <ul>{e.points.map((pt, k) => <li key={k}>{rich(pt)}</li>)}</ul>
+  </li>
 )
 
-function Resume({ open }) {
+// decorative Word 98 chrome; only Print and Download PDF do anything
+const MENU = ['File', 'Edit', 'View', 'Insert', 'Format', 'Tools', 'Table', 'Window', 'Help']
+
+function Resume() {
   return (
-    <div className="cv">
-      <h2>{ME.name}</h2>
-      <p className="role">{ME.role} · {ME.city}</p>
-      <p className="dim">{RESUME.tagline}</p>
-      <p className="contacts">
-        <a href={`mailto:${ME.email}`}>{ME.email}</a> · <a href={ME.linkedin} target="_blank" rel="noopener">LinkedIn</a> · <a href={ME.github} target="_blank" rel="noopener">GitHub</a>
-      </p>
-      <div className="stats">
-        {RESUME.stats.map(([n, label]) => <div key={label}><b>{n}</b>{label}</div>)}
+    <div className="word">
+      <div className="menu" aria-hidden="true">{MENU.map(m => <span key={m}>{m}</span>)}</div>
+      <div className="tools">
+        <span className="ti" aria-hidden="true">📄</span><span className="ti" aria-hidden="true">📂</span><span className="ti" aria-hidden="true">💾</span>
+        <button className="ti" title="Print" aria-label="Print resume" onClick={() => print()}>🖨</button>
+        {ME.pdf && <><span className="vsep" /><a className="dl" href={ME.pdf} download="Pranay-Bathija-Resume.pdf">⬇ Download PDF</a></>}
+        <span className="vsep hide-m" />
+        <span className="hide-m" aria-hidden="true"><span className="ti"><b>B</b></span><span className="ti"><i>I</i></span><span className="ti"><u>U</u></span></span>
       </div>
-      <h3>About</h3>
-      <p>{RESUME.about}</p>
-      <h3>Experience</h3>
-      {RESUME.jobs.map((j, i) => <Entry key={i} e={j} />)}
-      <h3>Education</h3>
-      {RESUME.education.map((j, i) => <Entry key={i} e={j} />)}
-      {RESUME.sections.map(s => (
-        <div key={s.title}>
-          <h3>{s.title}</h3>
-          <ul>{s.items.map((it, k) => <li key={k}>{it}</li>)}</ul>
-        </div>
-      ))}
-      {RESUME.quote && <div className="note">“{RESUME.quote.text}” — {RESUME.quote.by}</div>}
-      <p style={{ marginTop: 16 }}>
-        {ME.pdf && <a className="link" href={ME.pdf} download>⬇ Resume (PDF)</a>}
-        <button className="link" onClick={() => open('stack')}>See skills</button>
-        <button className="link" onClick={() => open('contact')}>Get in touch →</button>
-      </p>
+      <div className="scroll">
+        <article className="page">
+          <h1>{ME.name}</h1>
+          <p className="c">{ME.role} · {ME.city}</p>
+          <p className="c links">
+            <a href={`mailto:${ME.email}`}>{ME.email}</a>
+            <a href={ME.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+            <a href={ME.github} target="_blank" rel="noopener">GitHub</a>
+          </p>
+          <h2>Summary</h2>
+          <p>{RESUME.about}</p>
+          <h2>Experience</h2>
+          <ul>{RESUME.jobs.map((j, i) => <Entry key={i} e={j} />)}</ul>
+          <h2>Education</h2>
+          <ul>{RESUME.education.map((j, i) => <Entry key={i} e={j} />)}</ul>
+          <h2>Skills</h2>
+          <ul>{STACK.map(([g, items]) => <li key={g}><b>{g}:</b> {items.join(', ')}</li>)}</ul>
+          {RESUME.sections.map(s => (
+            <div key={s.title}>
+              <h2>{s.title}</h2>
+              <ul>{s.items.map((it, k) => <li key={k}>{rich(it)}</li>)}</ul>
+            </div>
+          ))}
+          {RESUME.quote && <p><i>“{RESUME.quote.text}” — {RESUME.quote.by}</i></p>}
+        </article>
+      </div>
     </div>
   )
 }
@@ -163,7 +177,7 @@ function Contact() {
 const Bin = () => <p style={{ textAlign: 'center', marginTop: 30 }}>🗑 Nothing in here.<br />Nothing gets deleted without a root cause analysis.</p>
 
 export const APPS = {
-  resume: { icon: '📄', title: 'Resume.doc', w: 640, h: 620, Body: Resume },
+  resume: { icon: '📄', title: 'Resume.doc', w: 820, h: 680, Body: Resume },
   projects: { icon: '📁', title: 'My Projects', w: 700, h: 480, Body: Projects },
   stack: { icon: '⌨', title: 'Skills', w: 680, h: 600, Body: Terminal },
   contact: { icon: '📬', title: 'Contact Me', w: 480, h: 440, Body: Contact },

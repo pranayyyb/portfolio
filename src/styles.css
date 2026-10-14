@@ -42,19 +42,29 @@ button{font:inherit;color:inherit;cursor:pointer}
 .link:active{border-style:inset}
 button.a{background:none;border:0;padding:0;color:#00e;text-decoration:underline}
 .note{background:#ffffe1;border:1px solid #cc9;padding:8px 10px;margin-top:12px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
-.stats div{border:2px inset var(--hi);padding:8px;text-align:center;background:var(--face)}
-.stats b{display:block;font-size:20px}
-.cv{max-width:640px;font-size:13px;line-height:1.5}
-.cv h2{font-size:22px;margin:0}
-.cv .role{font-weight:700;margin:2px 0}
-.cv .dim{color:#555}
-.cv .contacts{margin:6px 0 4px}
-.cv h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--title);border-bottom:1px solid #ccc;padding-bottom:3px;margin:22px 0 10px}
-.cv ul{margin:6px 0 0;padding-left:18px}
-.cv li{margin-bottom:4px}
-.entry{margin-bottom:16px}
-.entry .hd{display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap}
+/* resume: Word 98 document */
+.word{display:flex;flex-direction:column;height:calc(100% + 28px);margin:-14px;background:var(--face);user-select:none}
+.word .menu{display:flex;gap:2px;padding:3px 4px;border-bottom:1px solid var(--sh);overflow:hidden;white-space:nowrap}
+.word .menu span{padding:2px 8px}
+.tools{display:flex;align-items:center;gap:3px;padding:4px;border-top:1px solid var(--hi);border-bottom:1px solid var(--sh);flex-wrap:wrap}
+.ti{display:inline-grid;place-items:center;width:26px;height:24px;background:var(--face);border:2px outset var(--hi);font-size:13px;padding:0;margin-right:3px;vertical-align:middle}
+button.ti:active{border-style:inset}
+.vsep{width:2px;height:22px;border-left:1px solid var(--sh);border-right:1px solid var(--hi);margin:0 4px}
+.dl{background:var(--title);color:#fff;border:2px outset #6a7fb8;padding:3px 12px;font-weight:700;text-decoration:none}
+.dl:active{border-style:inset}
+.scroll{flex:1;overflow:auto;background:#808080;padding:14px;user-select:text}
+.page{background:#fff;max-width:780px;margin:0 auto;padding:36px 44px;box-shadow:2px 2px 0 #000;font:14px/1.5 Georgia,"Times New Roman",serif;color:#000}
+.page h1{text-align:center;font-weight:400;font-size:30px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px}
+.page .c{text-align:center;margin:0 0 4px}
+.page .links{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 18px;padding-bottom:12px;border-bottom:1.5px solid #000}
+.page a{color:#000}
+.page h2{font-size:15px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid #000;padding-bottom:2px;margin:18px 0 8px}
+.page p{margin:0 0 6px}
+.page ul{margin:0;padding-left:20px}
+.page li{margin-bottom:3px}
+.page .entry{margin-bottom:10px}
+.page .entry ul{margin-top:4px}
+.page .row{display:flex;justify-content:space-between;gap:2px 16px;flex-wrap:wrap}
 .cf input,.cf textarea{width:100%;padding:5px;border:2px inset #fff;font:inherit}
 /* explorer */
 .xp{display:flex;height:calc(100% + 28px);margin:-14px;min-height:260px}
@@ -85,5 +95,15 @@ a.tbtn{color:#000;text-decoration:none}
 #menu button{display:block;width:100%;padding:8px 14px;background:none;border:0;text-align:left}
 #menu button:hover,#menu button:focus-visible{background:var(--title);color:#fff;outline:0}
 #menu hr{margin:2px 0;border:0;border-top:1px solid var(--sh)}
-@media(max-width:700px){.win{inset:0 0 0 0!important;width:auto!important;height:auto!important;resize:none}.xp aside{display:none}#cta{display:none}.tbtn{max-width:80px}.hide-m{display:none}}
+@media(max-width:700px){.page{padding:20px 16px}.page h1{font-size:22px}.scroll{padding:6px}.win{inset:0 0 0 0!important;width:auto!important;height:auto!important;resize:none}.xp aside{display:none}#cta{display:none}.tbtn{max-width:80px}.hide-m{display:none}}
+/* printing (and resume.pdf) = just the resume page */
+@media print{
+  @page{margin:12mm}
+  html,body{height:auto;overflow:visible}
+  #bar,#icons,#cta,#menu,.win:not(:has(.word)),.win .tb,.word .menu,.tools{display:none!important}
+  #desk,.win,.wb,.word,.scroll{position:static!important;inset:auto!important;width:auto!important;height:auto!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important;overflow:visible!important;resize:none!important;animation:none!important}
+  .page{box-shadow:none;padding:0;max-width:none;font-size:11pt}
+  .page li,.page .entry .row{break-inside:avoid}
+  .page h2{break-after:avoid}
+}
 @media(prefers-reduced-motion:reduce){.win{animation:none}}

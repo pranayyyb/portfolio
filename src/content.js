@@ -9,39 +9,34 @@ export const ME = {
   github: 'https://github.com/pranayyyb',
   calendar: '', // booking link (e.g. Calendly); leave '' to hide the "Book a call" button
   replyTime: '', // e.g. '24 hours'; leave '' to make no promise
-  pdf: '', // put resume.pdf in /public and set this to '/resume.pdf' to show the download button
+  pdf: '/resume.pdf', // generated from this file by `npm run pdf` (dev server must be running); '' hides the Download PDF button
   cta: { title: '📬 Open to Business Analyst roles', text: 'Click here to get in touch.' }, // sticky note on the desktop
 }
 
 export const RESUME = {
   tagline: 'FinTech Operations · Business Analysis · Stakeholder Management',
-  stats: [
-    ['2', 'yrs full-time in app support'],
-    ['$20–30B', 'daily settlements supported'],
-    ['Tier-1', 'global bank clients'],
-  ],
   about:
     "BBA graduate with 2 years full time in application support at Baton Systems, a FinTech firm serving Tier-1 banks. I investigate production incidents, write root cause analyses and translate between engineers and clients, and I'm now moving into Business Analyst roles.",
-  // jobs and education share one shape: { role, company, dates, note?, points }
+  // jobs and education share one shape: { role, company, place?, dates, note?, points }. **text** renders bold.
   jobs: [
     {
       role: 'Application Support Engineer', company: 'Baton Systems', dates: 'Jan 2023 – Present',
-      note: 'Post-trade settlements platform · clients include JPMorgan, Citi, HSBC and Goldman Sachs',
+      note: 'Post-trade settlements platform supporting **$20–30B in daily settlements** · clients include JPMorgan, Citi, HSBC and Goldman Sachs',
       points: [
-        'Primary liaison between engineering teams and Tier-1 bank clients during production incidents.',
-        'Gather, clarify and communicate requirements across technical and non-technical stakeholders.',
-        'Write Root Cause Analysis reports that turn system failures into clear findings for senior management and clients.',
-        'Maintain runbooks and process workflows that cut incident resolution time and speed up onboarding.',
-        'Analyse ticket trends across client environments to catch process gaps before they escalate.',
-        'Coordinate with DevOps, QA and product teams on Kubernetes/EKS environments.',
-        'Track SLA compliance and report status to client stakeholders at major global banks.',
+        'Primary liaison between engineering teams and **Tier-1 bank clients** during production incidents.',
+        'Gather, clarify and communicate **requirements** across technical and non-technical stakeholders.',
+        'Write **Root Cause Analysis** reports that turn system failures into clear findings for senior management and clients.',
+        'Maintain **runbooks and process workflows** that **cut incident resolution time** and speed up onboarding.',
+        'Analyse **ticket trends** across client environments to catch process gaps before they escalate.',
+        'Coordinate with DevOps, QA and product teams on **Kubernetes/EKS** environments.',
+        'Track **SLA compliance** and report status to client stakeholders at major global banks.',
       ],
     },
     {
       role: 'Digital Marketing Intern', company: "Nester's Hub", dates: '2022 – 2023',
       points: [
-        'Analysed campaign data (ROAS, CPL, CTR) in Meta Ads Manager and Google Analytics and presented insights to stakeholders.',
-        'Ran A/B tests on ads and landing pages and turned the results into revised campaign briefs.',
+        'Analysed campaign data (**ROAS, CPL, CTR**) in **Meta Ads Manager** and **Google Analytics** and presented insights to stakeholders.',
+        'Ran **A/B tests** on ads and landing pages and turned the results into revised campaign briefs.',
         'Produced competitor and market research reports that shaped quarterly campaign strategy.',
         'Managed client relationships and prospecting outreach to drive repeat engagement.',
       ],
@@ -56,9 +51,9 @@ export const RESUME = {
   ],
   education: [
     {
-      role: 'BBA, Marketing & Business Management', company: "St. Joseph's College of Commerce, Bangalore", dates: '2021 – 2024',
+      role: 'BBA, Marketing & Business Management', company: "St. Joseph's College of Commerce", place: 'Bangalore, Karnataka', dates: '2021 – 2024',
       points: [
-        '1st place, Inter-Collegiate Marketing Fest (all Bangalore colleges): live campaign strategy and pitch.',
+        '**1st place**, Inter-Collegiate Marketing Fest (all Bangalore colleges): live campaign strategy and pitch.',
         'Captain, eSports team · Member of the Finance Club, Quiz Club and Business Team.',
       ],
     },
@@ -67,7 +62,7 @@ export const RESUME = {
     {
       title: 'Achievements',
       items: [
-        'National eSports Athlete of the Year, 2019 and 2020: one of fewer than 10 players in India recognised in both years.',
+        '**National eSports Athlete of the Year**, 2019 and 2020: one of fewer than 10 players in India recognised in both years.',
       ],
     },
     {
