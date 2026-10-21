@@ -22,8 +22,15 @@ button{font:inherit;color:inherit;cursor:pointer}
 .ico{width:100px;height:104px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;color:#fff;text-shadow:1px 1px 2px #000;padding:4px;border:1px dotted transparent;background:none}
 .ico i{display:block;font-size:52px;font-style:normal;line-height:1.1;margin-bottom:4px;filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5))}
 .ico:hover,.ico.sel,.ico:focus-visible{background:rgba(10,36,106,.45);border-color:#fff;outline:0}
-#cta{position:absolute;right:20px;bottom:20px;background:#ffffe1;border:1px solid #000;padding:10px 14px;max-width:260px;box-shadow:2px 2px 0 rgba(0,0,0,.4);text-align:left}
-#cta b{display:block;margin-bottom:2px}
+/* XP notification balloon, tail pointing at the clock */
+#cta{position:absolute;right:10px;bottom:14px;max-width:270px;background:#ffffe1;border:1px solid #000;border-radius:8px;box-shadow:2px 3px 6px rgba(0,0,0,.35);animation:balloon .3s ease-out;z-index:40}
+#cta::after{content:"";position:absolute;right:34px;bottom:-12px;border:12px solid transparent;border-bottom:0;border-right-width:0;border-top-color:#000}
+#cta::before{content:"";position:absolute;right:35px;bottom:-10px;border:11px solid transparent;border-bottom:0;border-right-width:0;border-top-color:#ffffe1;z-index:1}
+#cta .body{display:block;background:none;border:0;padding:10px 30px 10px 12px;text-align:left;line-height:1.45}
+#cta .body b{display:block;margin-bottom:3px}
+#cta .x{position:absolute;top:6px;right:6px;width:18px;height:18px;padding:0;border:1px solid transparent;border-radius:3px;background:none;font-size:11px;line-height:1}
+#cta .x:hover{border-color:#888;background:#fff}
+@keyframes balloon{from{opacity:0;transform:translateY(8px)}}
 /* windows */
 .win{position:absolute;background:var(--face);border:2px outset var(--hi);box-shadow:3px 3px 10px rgba(0,0,0,.45);display:flex;flex-direction:column;min-width:260px;min-height:160px;max-width:100%;max-height:100%;animation:pop .15s;resize:both;overflow:hidden}
 @keyframes pop{from{transform:scale(.92);opacity:0}}
@@ -132,4 +139,4 @@ a.tbtn{color:#000;text-decoration:none}
   .page li,.page .entry .row{break-inside:avoid}
   .page h2{break-after:avoid}
 }
-@media(prefers-reduced-motion:reduce){.win{animation:none}}
+@media(prefers-reduced-motion:reduce){.win,#cta{animation:none}}

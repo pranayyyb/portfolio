@@ -89,8 +89,16 @@ function Desktop({ live, first }) {
   const [s, dispatch] = useReducer(reducer, init)
   const [sel, setSel] = useState()
   const [menu, setMenu] = useState(false)
+  const [tip, setTip] = useState(false)
   const open = id => dispatch({ type: 'open', id })
   const active = activeId(s)
+
+  // XP-style message bubble pops up a few seconds after the desktop appears
+  useEffect(() => {
+    if (!live) return
+    const t = setTimeout(() => setTip(true), 2500)
+    return () => clearTimeout(t)
+  }, [live])
 
   // first visit this session: greet with the resume
   useEffect(() => {
@@ -116,10 +124,15 @@ function Desktop({ live, first }) {
             </button>
           ))}
         </div>
-        <button id="cta" onClick={() => open('contact')}>
-          <b>{ME.cta.title}</b>
-          {ME.cta.text}
-        </button>
+        {tip && (
+          <div id="cta" role="status">
+            <button className="body" onClick={() => { setTip(false); open('contact') }}>
+              <b>{ME.cta.title}</b>
+              {ME.cta.text}
+            </button>
+            <button className="x" aria-label="Dismiss" onClick={() => setTip(false)}>✕</button>
+          </div>
+        )}
         {s.wins.map(w => {
           const { Body } = APPS[w.id]
           return <Win key={w.id} w={w} active={w.id === active} dispatch={dispatch}><Body open={open} /></Win>
