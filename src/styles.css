@@ -16,12 +16,11 @@ button{font:inherit;color:inherit;cursor:pointer}
 .hint{text-align:center;color:var(--sh);margin-top:12px;font-size:11px}
 .b98{background:var(--face);border:2px outset var(--hi);padding:4px 18px;min-width:72px}
 .b98:active{border-style:inset}
-/* desktop: SVG wallpaper (Wallpaper in App.jsx) */
-#desk{position:fixed;inset:0 0 32px 0;background:#3f86e3;overflow:hidden}
-#wall{position:absolute;inset:0;width:100%;height:100%}
-#icons{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;flex-wrap:wrap;gap:6px;height:calc(100% - 16px);align-content:flex-start}
-.ico{width:84px;text-align:center;color:#fff;text-shadow:1px 1px 2px #000;padding:4px;border:1px dotted transparent;background:none}
-.ico i{display:block;font-size:34px;font-style:normal;line-height:1.1;filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5))}
+/* desktop: classic XP wallpaper (public/bliss.jpg) */
+#desk{position:fixed;inset:0 0 32px 0;background:#3f86e3 url(/bliss.jpg) center/cover;overflow:hidden}
+#icons{position:absolute;top:8px;left:8px;bottom:8px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,104px);grid-auto-columns:100px;gap:6px}
+.ico{width:100px;height:104px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;color:#fff;text-shadow:1px 1px 2px #000;padding:4px;border:1px dotted transparent;background:none}
+.ico i{display:block;font-size:52px;font-style:normal;line-height:1.1;margin-bottom:4px;filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5))}
 .ico:hover,.ico.sel,.ico:focus-visible{background:rgba(10,36,106,.45);border-color:#fff;outline:0}
 #cta{position:absolute;right:20px;bottom:20px;background:#ffffe1;border:1px solid #000;padding:10px 14px;max-width:260px;box-shadow:2px 2px 0 rgba(0,0,0,.4);text-align:left}
 #cta b{display:block;margin-bottom:2px}
