@@ -81,16 +81,17 @@ export const RESUME = {
   quote: null, // { text: '…', by: 'Name, Title, Company' } — only add a real testimonial
 }
 
-// Work highlights. result = short outcome chip. link: URL to a write-up; leave '' to hide the button
+// "My Projects" folders. Keep descriptions to one or two short sentences and don't name employers (owner's call, 2026-10-21).
+// type: shown under the title. result: one-liner used by the terminal's `projects` command. link: GitHub/write-up URL, '' hides the button.
 export const PROJECTS = [
-  { name: 'Tier-1 Bank Incident Liaison', desc: 'At Baton Systems I am the primary liaison between internal engineering teams and Tier-1 bank clients during production incidents: gathering, clarifying and communicating requirements across technical and non-technical stakeholders.', tech: ['Client Communication', 'Escalation Handling', 'JIRA'], result: 'Tier-1 bank clients', link: '' },
-  { name: 'Root Cause Analysis Reports', desc: 'Structured RCA documents for production incidents that translate complex system failures into clear, actionable findings for senior management and client teams.', tech: ['Root Cause Analysis', 'Confluence', 'Executive Reporting'], result: 'Clear findings for leadership', link: '' },
-  { name: 'Runbooks & Process Workflows', desc: 'Documented and maintained operational runbooks and process workflows, reducing average incident resolution time and improving onboarding speed for new engineers.', tech: ['Process Documentation', 'Confluence'], result: 'Faster incident resolution', link: '' },
-  { name: 'Ticket Trend Analysis', desc: 'Analysed recurring ticket trend data across multiple client environments to spot upstream process gaps early, enabling intervention before issues escalated.', tech: ['JIRA', 'Gap Analysis'], result: 'Fewer escalations', link: '' },
-  { name: 'SLA Compliance Reporting', desc: 'Tracked SLA compliance for critical financial infrastructure and produced regular status reports communicated directly to client stakeholders at major global banks.', tech: ['SLA Management', 'Executive Reporting'], result: 'Regular client status reports', link: '' },
-  { name: 'EKS Delivery Coordination', desc: 'Coordinated with DevOps, QA and product teams on Kubernetes/EKS environments, translating business-side incidents into technical requirements and back across the software delivery lifecycle.', tech: ['Kubernetes/EKS', 'Cross-functional Coordination'], result: 'Business ↔ technical translation', link: '' },
-  { name: 'Campaign Performance Analysis', desc: "At Nester's Hub I analysed campaign performance data (ROAS, CPL, CTR), ran A/B tests on ad creatives and landing pages, and turned the findings into revised campaign briefs.", tech: ['Meta Ads Manager', 'Google Analytics', 'A/B Testing'], result: 'Insights for stakeholders', link: '' },
-  { name: 'Inter-Collegiate Marketing Fest', desc: 'Live campaign strategy and pitch presentation, competing against colleges from across Bengaluru.', tech: ['Campaign Strategy', 'Pitching'], result: '1st place', link: '' },
+  { name: 'Olist E-Commerce Sales Analysis', type: 'SQL project', desc: 'SQL analysis of ~100,000 marketplace orders: what sells, who buys, how they pay and whether they come back. Found that only 3.1% of customers ever ordered again.', tech: ['SQL', 'SQLite', 'Data Analysis'], result: 'SQL analysis of 100k orders', link: 'https://github.com/pranayyyb/olist-ecommerce-sales-analysis' },
+  { name: 'Retro Desktop Portfolio', type: 'Web project', desc: "The site you're on: a Windows-style desktop with draggable windows, a Word-style resume and a game of Snake.", tech: ['React', 'Vite', 'CSS'], result: "This site", link: 'https://github.com/pranayyyb/portfolio' },
+  { name: 'Production Incident Liaison', type: 'Work highlight', desc: 'The link between engineers and bank clients during production incidents, keeping both sides informed.', tech: ['Client Communication', 'Escalation Handling', 'JIRA'], result: 'Engineers ↔ bank clients', link: '' },
+  { name: 'Root Cause Analysis Reports', type: 'Work highlight', desc: 'Turn system failures into clear, actionable findings for leadership and clients.', tech: ['Root Cause Analysis', 'Confluence'], result: 'Clear findings for leadership', link: '' },
+  { name: 'Runbooks & Workflows', type: 'Work highlight', desc: 'Runbooks and process docs that cut incident resolution time and speed up onboarding.', tech: ['Process Documentation', 'Confluence'], result: 'Faster incident resolution', link: '' },
+  { name: 'Ticket Trend Analysis', type: 'Work highlight', desc: 'Spot recurring issues across client environments before they escalate.', tech: ['JIRA', 'Gap Analysis'], result: 'Fewer escalations', link: '' },
+  { name: 'SLA Reporting', type: 'Work highlight', desc: 'Track SLA compliance and report status to client stakeholders.', tech: ['SLA Management', 'Executive Reporting'], result: 'Regular status reports', link: '' },
+  { name: 'Campaign Performance Analysis', type: 'Work highlight', desc: 'Read ROAS, CPL and CTR data and A/B test results to sharpen campaign briefs.', tech: ['Google Analytics', 'Meta Ads Manager', 'A/B Testing'], result: 'Data-led campaign briefs', link: '' },
 ]
 
 export const STACK = [

@@ -16,8 +16,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .hint{text-align:center;color:var(--sh);margin-top:12px;font-size:11px}
 .b98{background:var(--face);border:2px outset var(--hi);padding:4px 18px;min-width:72px}
 .b98:active{border-style:inset}
-/* desktop: pure-CSS rolling hills */
-#desk{position:fixed;inset:0 0 32px 0;background:radial-gradient(120% 60% at 30% 108%,#4fa832 0 55%,transparent 55.2%),radial-gradient(100% 45% at 90% 112%,#3c8c26 0 55%,transparent 55.2%),linear-gradient(#2a6fd6,#8cc4f5 70%);overflow:hidden}
+/* desktop: SVG wallpaper (Wallpaper in App.jsx) */
+#desk{position:fixed;inset:0 0 32px 0;background:#3f86e3;overflow:hidden}
+#wall{position:absolute;inset:0;width:100%;height:100%}
 #icons{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;flex-wrap:wrap;gap:6px;height:calc(100% - 16px);align-content:flex-start}
 .ico{width:84px;text-align:center;color:#fff;text-shadow:1px 1px 2px #000;padding:4px;border:1px dotted transparent;background:none}
 .ico i{display:block;font-size:34px;font-style:normal;line-height:1.1;filter:drop-shadow(1px 1px 1px rgba(0,0,0,.5))}
@@ -75,8 +76,29 @@ button.ti:active{border-style:inset}
 .xp aside div{padding:3px 6px;cursor:default}.xp aside .on{background:var(--title);color:#fff}
 .xp main{flex:1;padding:14px;overflow:auto}
 .files{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
-.file{text-align:center;padding:6px;background:none;border:0}.file i{display:block;font-size:34px;font-style:normal}.file:hover,.file:focus-visible{background:#cde}
+.file{text-align:center;padding:6px;background:none;border:0}.file i{display:block;font-size:46px;font-style:normal;line-height:1.1}.file:hover,.file:focus-visible{background:#cde}
 .back{margin-bottom:12px}
+.card{border:1px solid var(--sh);padding:16px 18px;max-width:560px}
+.card-hd{display:flex;gap:12px;align-items:center;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid #ddd}
+.card-hd .big{font-size:52px;line-height:1}
+.card-hd h2{margin:0 0 2px}
+.card .dim{color:#666;font-size:11px}
+.gh{display:inline-flex;align-items:center;gap:6px}
+/* snake */
+.snake{display:flex;flex-direction:column;align-items:center;gap:8px}
+.snake-bar{display:flex;gap:14px;align-items:center;justify-content:space-between;width:100%;max-width:320px}
+.board{position:relative;display:grid;grid-template-columns:repeat(16,1fr);width:min(100%,320px);aspect-ratio:1;background:#0b2a0b;border:2px inset var(--hi);outline-offset:2px}
+.board i{display:block}
+.board .s{background:#5bd65b;border-radius:2px;margin:1px}
+.board .head{background:#b8ff7a}
+.board .food{background:#ff4040;border-radius:50%;margin:3px}
+.board .msg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#dfd;background:rgba(0,0,0,.55);font:13px/1.6 "Courier New",monospace;cursor:pointer;padding:12px}
+.pad{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,34px);gap:4px}
+.pad button{min-width:0;padding:0}
+.pad [aria-label=Up]{grid-column:2}
+.pad [aria-label=Left]{grid-column:1;grid-row:2}
+.pad [aria-label=Down]{grid-column:2;grid-row:2}
+.pad [aria-label=Right]{grid-column:3;grid-row:2}
 /* terminal */
 .term{background:#000;color:#0f0;font:13px/1.5 "Courier New",monospace;margin:-14px;padding:14px;min-height:calc(100% + 28px);white-space:pre-wrap;cursor:text}
 .term .k{color:#8f8;font-weight:700}

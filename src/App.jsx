@@ -1,15 +1,7 @@
 import { useEffect, useReducer, useState } from 'react'
 import { ME } from './content.js'
-import { APPS } from './apps.jsx'
+import { APPS, LOGO } from './apps.jsx'
 import { init, reducer, activeId } from './wm.js'
-
-// brand logos as inline SVG (no image files)
-const svg = (d, fill) => <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d={d} fill={fill} /></svg>
-const LOGO = {
-  mail: <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><rect x="1.5" y="4" width="21" height="16" rx="1.5" fill="#fff" stroke="#c5221f" strokeWidth="2" /><path d="M2.5 5.5 12 13l9.5-7.5" fill="none" stroke="#c5221f" strokeWidth="2" /></svg>,
-  linkedin: svg('M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.71 1.637-1.452 3.37-1.452 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z', '#0a66c2'),
-  github: svg('M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12', '#000'),
-}
 
 const BOOT = ['Loading Resume.doc ............ OK', 'Loading work highlights ....... OK', 'Loading skills ................ OK', 'Starting desktop ...']
 
@@ -84,6 +76,41 @@ function Win({ w, active, dispatch, children }) {
   )
 }
 
+// rolling green hill under a blue sky, drawn in SVG (a lookalike of the classic XP wallpaper, not the photo)
+const Wallpaper = () => (
+  <svg id="wall" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#1452c9" /><stop offset=".45" stopColor="#3f86e3" /><stop offset=".7" stopColor="#9cc9f3" /></linearGradient>
+      <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#9ad64a" /><stop offset=".35" stopColor="#5fae22" /><stop offset="1" stopColor="#2f7a12" /></linearGradient>
+      <linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#4f9a1c" /><stop offset="1" stopColor="#24600c" /></linearGradient>
+      <radialGradient id="sun" cx=".3" cy=".55" r=".5"><stop offset="0" stopColor="#d8f27a" stopOpacity=".55" /><stop offset="1" stopColor="#d8f27a" stopOpacity="0" /></radialGradient>
+      <filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+      <filter id="wisp" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" /></filter>
+    </defs>
+    <rect width="1600" height="1000" fill="url(#sky)" />
+    <g fill="#fff" filter="url(#wisp)" opacity=".75">
+      <path d="M520 40 C 700 60 860 140 900 210 C 800 160 660 110 520 40Z" />
+      <path d="M180 270 C 260 260 330 300 300 330 C 250 320 210 300 180 270Z" />
+      <path d="M1180 60 C 1320 70 1420 130 1500 120 C 1400 160 1260 120 1180 60Z" />
+    </g>
+    <g fill="#fff" filter="url(#soft)" opacity=".9">
+      <ellipse cx="160" cy="40" rx="190" ry="50" />
+      <ellipse cx="1240" cy="70" rx="200" ry="55" />
+      <ellipse cx="700" cy="330" rx="90" ry="38" />
+      <ellipse cx="1050" cy="300" rx="130" ry="40" />
+      <ellipse cx="1130" cy="360" rx="160" ry="48" />
+      <ellipse cx="1330" cy="240" rx="110" ry="34" />
+      <ellipse cx="340" cy="210" rx="70" ry="22" />
+      <ellipse cx="1000" cy="450" rx="420" ry="26" />
+      <ellipse cx="500" cy="440" rx="200" ry="14" />
+    </g>
+    <path d="M1150 530 C 1260 505 1380 500 1600 515 L1600 560 L1150 560Z" fill="#8aa4c4" />
+    <path d="M0 500 C 220 450 520 420 820 455 C 1100 488 1350 520 1600 540 L1600 1000 L0 1000Z" fill="url(#hill)" />
+    <rect width="1600" height="1000" fill="url(#sun)" />
+    <path d="M0 800 C 400 770 900 785 1600 740 L1600 1000 L0 1000Z" fill="url(#field)" opacity=".85" filter="url(#wisp)" />
+  </svg>
+)
+
 function Clock() {
   const [t, setT] = useState(() => new Date())
   useEffect(() => {
@@ -110,6 +137,7 @@ function Desktop({ live, first }) {
   return (
     <div inert={!live} onClick={() => setMenu(false)}>
       <div id="desk">
+        <Wallpaper />
         <div id="icons">
           {Object.entries(APPS).map(([k, a]) => (
             // mouse: click selects, double-click opens. Keyboard (detail 0) and touch: one press opens.
