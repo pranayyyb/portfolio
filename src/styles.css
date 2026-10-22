@@ -75,6 +75,7 @@ button.ti:active{border-style:inset}
 .page .role+.role{margin-top:4px}
 .page .flat li{margin-bottom:2px}
 .page .row{display:flex;justify-content:space-between;gap:0 16px;flex-wrap:wrap}
+.page .summary{margin:6px 0 0}
 .cf input,.cf textarea{width:100%;padding:5px;border:2px inset #fff;font:inherit}
 /* explorer */
 .xp{display:flex;height:calc(100% + 28px);margin:-14px;min-height:260px}
@@ -129,13 +130,16 @@ a.tbtn{color:#000;text-decoration:none}
 @media(max-width:700px){.page{padding:20px 16px}.page h1{font-size:26px}.scroll{padding:6px}.win{inset:0 0 0 0!important;width:auto!important;height:auto!important;resize:none}.xp aside{display:none}#cta{display:none}.tbtn{max-width:80px}.hide-m{display:none}}
 /* printing (and resume.pdf) = just the resume page */
 @media print{
-  @page{margin:10mm 12mm}
+  @page{margin:8mm 11mm}
   html,body{height:auto;overflow:visible}
   #bar,#icons,#cta,#menu,.win:not(:has(.word)),.win .tb,.word .menu,.tools{display:none!important}
   #desk,.win,.wb,.word,.scroll{position:static!important;inset:auto!important;width:auto!important;height:auto!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important;overflow:visible!important;resize:none!important;animation:none!important}
-  .page{box-shadow:none;padding:0;max-width:none;font-size:10pt}
-  .page .entry ul{font-size:9.5pt}
-  .page h2{margin-top:7px}
+  .page{box-shadow:none;padding:0;max-width:none;font-size:9.5pt;line-height:1.22}
+  .page h1{font-size:28px}
+  .page .entry{margin-bottom:3px}
+  .page .entry li,.page .flat li{margin-bottom:0}
+  .page .entry ul{font-size:9pt}
+  .page h2{margin:6px 0 3px;font-size:14.5px;line-height:1.15}
   .page li,.page .entry .row{break-inside:avoid}
   .page h2{break-after:avoid}
 }

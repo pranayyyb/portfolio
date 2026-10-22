@@ -14,42 +14,51 @@ export const ME = {
 }
 
 export const RESUME = {
-  tagline: 'FinTech Operations · Business Analysis · Stakeholder Management',
-  // { company, place?, role, dates, note?, points }. A company with several roles uses roles: [{ role, dates, note?, points }]. **text** renders bold.
+  summary: 'Application Support Engineer moving into Product. Two years on a post-trade settlements platform processing **$20–30B daily** for Tier-1 banks, turning client pain points into requirements, process fixes and automated internal workflows.',
+  // { company, place?, role?, dates?, note?, points }. A company with several roles uses roles: [{ role, dates, note?, points }]. **text** renders bold.
   jobs: [
     {
       company: 'Baton Systems', place: 'Chennai, Tamil Nadu',
       roles: [{
-      role: 'Application Support Engineer', dates: 'Dec 2024 – Present',
-      note: 'Post-trade settlements platform supporting **$20–30B in daily settlements** · clients include JPMorgan, Citi, HSBC and Goldman Sachs',
-      points: [
-        'Primary liaison between engineering teams and **Tier-1 bank clients** during production incidents.',
-        'Gather, clarify and communicate **requirements** across technical and non-technical stakeholders.',
-        'Write **Root Cause Analysis** reports that turn system failures into clear findings for senior management and clients.',
-        'Maintain **runbooks and process workflows** that **cut incident resolution time** and speed up onboarding.',
-        'Analyse **ticket trends** across client environments to catch process gaps before they escalate.',
-        'Coordinate with DevOps, QA and product teams on **Kubernetes/EKS** environments.',
-        'Track **SLA compliance** and report status to client stakeholders at major global banks.',
-      ],
+        role: 'Application Support Engineer', dates: 'Dec 2024 – Present',
+        note: 'Post-trade settlements platform supporting **$20–30B in daily settlements** for JPMorgan, Citi, HSBC, Goldman Sachs, RBC and Citadel.',
+        points: [
+          'Identified **10+ recurring incident patterns** through ticket-trend analysis across 6 client environments and drove fixes into the **product backlog** with engineering, cutting repeat escalations by **~15%**.',
+          'Acted as **voice of the customer** for Tier-1 bank clients: translated production issues into clear **requirements and user stories** for product and engineering teams.',
+          'Built a **Claude-assisted workflow** that automates the weekly High Urgency Alert report and RCA drafting, reducing reporting time from **~12 hours to under 1 hour** a week.',
+          'Authored **40+ Root Cause Analysis reports** for senior management and bank clients, each closing with process or product recommendations.',
+          'Wrote and maintained **15+ runbooks** and process workflows, reducing incident resolution time by **~20%** and new-hire ramp-up by **~2 weeks**.',
+          'Owned SLA tracking and status reporting to client stakeholders, maintaining **98%+ SLA compliance**.',
+          'Coordinated incident response with DevOps, QA and product teams on **Kubernetes/EKS** environments.',
+        ],
       }, {
         role: 'Application Support Engineer Intern', dates: 'May 2023 – Jun 2023', points: [],
       }],
     },
     {
-      role: 'Intern', company: "Nester's Hub", place: 'Bengaluru, Karnataka', dates: 'Oct 2023 – Nov 2023',
+      company: "Nester's Hub", place: 'Bengaluru, Karnataka', role: 'Marketing & Analytics Intern', dates: 'Oct 2023 – Nov 2023',
       points: [
         'Analysed campaign data (**ROAS, CPL, CTR**) in **Meta Ads Manager** and **Google Analytics** and presented insights to stakeholders.',
-        'Ran **A/B tests** on ads and landing pages and turned the results into revised campaign briefs.',
+        'Ran **A/B tests** on ads and landing pages and turned results into revised campaign briefs.',
         'Produced competitor and market research reports that shaped quarterly campaign strategy.',
-        'Managed client relationships and prospecting outreach to drive repeat engagement.',
       ],
     },
     {
-      role: 'Marketing Intern', company: 'Ullas Trust (NGO)', place: 'Chennai, Tamil Nadu', dates: 'Jul 2022 – Aug 2022',
+      company: 'Ullas Trust (NGO)', place: 'Chennai, Tamil Nadu', role: 'Marketing Intern', dates: 'Jul 2022 – Aug 2022',
       points: [
         'Ran paid digital campaigns on a tight NGO budget, meeting awareness and outreach goals.',
         'Improved search visibility through on-page and off-page SEO.',
       ],
+    },
+  ],
+  projects: [
+    {
+      company: 'HUR & RCA Automation', place: 'Baton Systems',
+      points: ['Spotted that weekly alert reporting and RCA drafting were manual and repetitive; designed a **Claude workflow** with an automated **data scraper across Confluence, Jira and Slack** that produces both, and documented it as a repeatable process. **Adopted team-wide**, saving hours of manual reporting for the whole team every week.'],
+    },
+    {
+      company: 'Daily Tracking App', place: 'Personal',
+      points: ['Designed and built a personal **lifestyle tracking app** with **Claude Code**, bringing daily health and fitness habits into one simple tool.'],
     },
   ],
   education: [
@@ -62,20 +71,8 @@ export const RESUME = {
     },
   ],
   sections: [
-    {
-      title: 'Achievements',
-      items: [
-        '**National eSports Athlete of the Year**, 2019 and 2020: one of fewer than 10 players in India recognised in both years.',
-      ],
-    },
-    {
-      title: 'Certifications',
-      items: [
-        'Prompt Engineering · Anthropic Claude (Claude Code)',
-        'Google Analytics 4 · Google Skillshop',
-        'Meta Blueprint: Digital Marketing Associate · Meta (in progress)',
-      ],
-    },
+    { title: 'Achievements', items: ['**National eSports Athlete of the Year**, 2019 and 2020: one of fewer than 10 players in India recognised in both years.'] },
+    { title: 'Certifications', items: ['Prompt Engineering, Anthropic Claude (Claude Code) · Google Analytics 4, Google Skillshop · Meta Blueprint: Digital Marketing Associate (in progress)'] },
   ],
   quote: null, // { text: '…', by: 'Name, Title, Company' } — only add a real testimonial
 }
@@ -94,10 +91,10 @@ export const PROJECTS = [
 ]
 
 export const STACK = [
-  ['Business Analysis', ['Requirements Gathering', 'User Story Writing', 'Gap Analysis', 'Root Cause Analysis', 'Process Documentation']],
+  ['Product', ['Requirements Gathering', 'User Stories', 'Prioritisation', 'Gap Analysis', 'Root Cause Analysis', 'A/B Testing', 'Process Design']],
   ['Stakeholder Management', ['Client Communication', 'Cross-functional Coordination', 'Executive Reporting', 'Escalation Handling', 'SLA Management']],
-  ['FinTech Domain', ['Post-Trade Settlements', 'Collateral Management', 'Trading Workflows', 'Financial Infrastructure', 'Incident Lifecycle']],
-  ['Cloud & DevOps', ['AWS (EC2, S3, IAM)', 'Docker', 'Kubernetes/EKS', 'CI/CD (TeamCity, GitHub Actions)', 'Monitoring (Grafana, Kibana)']],
-  ['Tools', ['JIRA', 'Confluence', 'Postman', 'Excel', 'Claude Code', 'VS Code', 'Git/GitHub']],
-  ['Marketing & Analytics', ['Google Analytics 4', 'Meta Ads Manager', 'A/B Testing', 'Canva']],
+  ['Data & Analytics', ['Excel', 'Google Analytics 4', 'Meta Ads Manager', 'Grafana', 'Kibana']],
+  ['Domain', ['Post-Trade Settlements', 'Collateral Management', 'FX Settlement', 'Trading Workflows']],
+  ['Technical', ['AWS', 'Kubernetes/EKS', 'CI/CD', 'Postman', 'Git/GitHub', 'Claude Code']],
+  ['Tools', ['Jira', 'Confluence', 'Canva']],
 ]

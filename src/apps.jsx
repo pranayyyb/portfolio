@@ -11,8 +11,8 @@ const Entry = ({ e, plain }) => (
   <li className="entry">
     <div className="row"><b>{e.company}</b><span>{e.place}</span></div>
     {(e.roles ?? [e]).map(r => (
-      <div key={r.role} className="role">
-        <div className="row">{plain ? <span>{r.role}</span> : <b>{r.role}</b>}<span>{r.dates}</span></div>
+      <div key={r.role ?? 0} className="role">
+        {r.role && <div className="row">{plain ? <span>{r.role}</span> : <b>{r.role}</b>}<span>{r.dates}</span></div>}
         {r.note && <div>{rich(r.note)}</div>}
         {r.points.length > 0 && <ul>{r.points.map((pt, k) => <li key={k}>{rich(pt)}</li>)}</ul>}
       </div>
@@ -54,10 +54,13 @@ function Resume() {
             <a href={ME.linkedin} target="_blank" rel="noopener">LinkedIn</a>
             <a href={ME.github} target="_blank" rel="noopener">GitHub</a>
           </p>
-          <h2>Education</h2>
-          <ul>{RESUME.education.map((j, i) => <Entry key={i} e={j} plain />)}</ul>
+          <p className="summary">{rich(RESUME.summary)}</p>
           <h2>Experience</h2>
           <ul>{RESUME.jobs.map((j, i) => <Entry key={i} e={j} />)}</ul>
+          <h2>Projects</h2>
+          <ul>{RESUME.projects.map((j, i) => <Entry key={i} e={j} />)}</ul>
+          <h2>Education</h2>
+          <ul>{RESUME.education.map((j, i) => <Entry key={i} e={j} plain />)}</ul>
           {RESUME.sections.map(s => (
             <div key={s.title}>
               <h2>{s.title}</h2>
@@ -261,7 +264,7 @@ function Snake() {
 const Bin = () => <p style={{ textAlign: 'center', marginTop: 30 }}>🗑 Nothing in here.<br />Nothing gets deleted without a root cause analysis.</p>
 
 export const APPS = {
-  resume: { icon: <WordIcon />, title: 'Pranay_Resume.doc', w: 820, h: 680, Body: Resume },
+  resume: { icon: <WordIcon />, title: 'Pranay_\u200bResume.doc', w: 820, h: 680, Body: Resume }, // zero-width space lets the desktop label wrap after the underscore
   projects: { icon: <FolderIcon />, title: 'Projects', w: 720, h: 500, Body: Projects },
   stack: { icon: '⌨', title: 'Skills', w: 680, h: 600, Body: Terminal },
   snake: { icon: '🐍', title: 'Snake', w: 380, h: 520, Body: Snake, spot: '1 / 2' }, // spot: fixed desktop grid cell (row / column); top of the second column
