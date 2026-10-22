@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test",
-    "pdf": "node scripts/resume-pdf.mjs"
+    "pdf": "node scripts/resume-pdf.mjs",
+    "deploy": "sh scripts/deploy.sh"
   },
   "dependencies": {
     "react": "^19.3.0",

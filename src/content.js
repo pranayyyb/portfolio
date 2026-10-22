@@ -9,7 +9,7 @@ export const ME = {
   github: 'https://github.com/pranayyyb',
   calendar: '', // booking link (e.g. Calendly); leave '' to hide the "Book a call" button
   replyTime: '', // e.g. '24 hours'; leave '' to make no promise
-  pdf: '/resume.pdf', // generated from this file by `npm run pdf` (dev server must be running); '' hides the Download PDF button
+  pdf: 'resume.pdf', // generated from this file by `npm run pdf` (dev server must be running); '' hides the Download PDF button
   cta: { title: '💬 New message from Pranay', text: 'Thanks for stopping by! Click to get in touch.' }, // XP-style pop-up bubble above the clock
 }
 
