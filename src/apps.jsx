@@ -261,10 +261,10 @@ function Snake() {
 const Bin = () => <p style={{ textAlign: 'center', marginTop: 30 }}>🗑 Nothing in here.<br />Nothing gets deleted without a root cause analysis.</p>
 
 export const APPS = {
-  resume: { icon: <WordIcon />, title: 'Resume.doc', w: 820, h: 680, Body: Resume },
-  projects: { icon: <FolderIcon />, title: 'My Projects', w: 720, h: 500, Body: Projects },
+  resume: { icon: <WordIcon />, title: 'Pranay_Resume.doc', w: 820, h: 680, Body: Resume },
+  projects: { icon: <FolderIcon />, title: 'Projects', w: 720, h: 500, Body: Projects },
   stack: { icon: '⌨', title: 'Skills', w: 680, h: 600, Body: Terminal },
   snake: { icon: '🐍', title: 'Snake', w: 380, h: 520, Body: Snake, spot: '1 / 2' }, // spot: fixed desktop grid cell (row / column); top of the second column
-  contact: { icon: '📬', title: 'Contact Me', w: 480, h: 440, Body: Contact },
+  contact: { icon: '📬', title: 'Say Hello', w: 480, h: 440, Body: Contact },
   bin: { icon: '🗑', title: 'Recycle Bin', w: 360, h: 220, Body: Bin },
 }

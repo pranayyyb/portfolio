@@ -16,7 +16,6 @@ export const ME = {
 export const RESUME = {
   tagline: 'FinTech Operations · Business Analysis · Stakeholder Management',
   // { company, place?, role, dates, note?, points }. A company with several roles uses roles: [{ role, dates, note?, points }]. **text** renders bold.
-  // Dates and cities from the owner's LinkedIn (2026-10-14).
   jobs: [
     {
       company: 'Baton Systems', place: 'Chennai, Tamil Nadu',
@@ -81,7 +80,7 @@ export const RESUME = {
   quote: null, // { text: '…', by: 'Name, Title, Company' } — only add a real testimonial
 }
 
-// "My Projects" folders. Keep descriptions to one or two short sentences and don't name employers (owner's call, 2026-10-21).
+// Project folders. Keep descriptions to one or two short sentences.
 // type: shown under the title. result: one-liner used by the terminal's `projects` command. link: GitHub/write-up URL, '' hides the button.
 export const PROJECTS = [
   { name: 'Olist E-Commerce Sales Analysis', type: 'SQL project', desc: 'SQL analysis of ~100,000 marketplace orders: what sells, who buys, how they pay and whether they come back. Found that only 3.1% of customers ever ordered again.', tech: ['SQL', 'SQLite', 'Data Analysis'], result: 'SQL analysis of 100k orders', link: 'https://github.com/pranayyyb/olist-ecommerce-sales-analysis' },
@@ -98,7 +97,7 @@ export const STACK = [
   ['Business Analysis', ['Requirements Gathering', 'User Story Writing', 'Gap Analysis', 'Root Cause Analysis', 'Process Documentation']],
   ['Stakeholder Management', ['Client Communication', 'Cross-functional Coordination', 'Executive Reporting', 'Escalation Handling', 'SLA Management']],
   ['FinTech Domain', ['Post-Trade Settlements', 'Collateral Management', 'Trading Workflows', 'Financial Infrastructure', 'Incident Lifecycle']],
-  ['Cloud, DevOps & Tools', ['AWS (S3, IAM, EC2)', 'Docker', 'Kubernetes/EKS', 'CI/CD (GitHub Actions, TeamCity)', 'Monitoring (Grafana, Kibana)']],
+  ['Cloud & DevOps', ['AWS (EC2, S3, IAM)', 'Docker', 'Kubernetes/EKS', 'CI/CD (TeamCity, GitHub Actions)', 'Monitoring (Grafana, Kibana)']],
   ['Tools', ['JIRA', 'Confluence', 'Postman', 'Excel', 'Claude Code', 'VS Code', 'Git/GitHub']],
   ['Marketing & Analytics', ['Google Analytics 4', 'Meta Ads Manager', 'A/B Testing', 'Canva']],
 ]
