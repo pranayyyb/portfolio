@@ -188,22 +188,45 @@ function Terminal({ open }) {
 }
 
 function Contact() {
-  const submit = e => {
+  const [state, setState] = useState('idle') // idle | sending | sent | failed
+  const mailto = f => `mailto:${ME.email}?subject=${encodeURIComponent('Portfolio enquiry from ' + f.n.value)}&body=${encodeURIComponent(f.m.value + '\n\n' + f.n.value + ' <' + f.e.value + '>')}`
+  const submit = async e => {
     e.preventDefault()
     const f = e.target
-    location.href = `mailto:${ME.email}?subject=${encodeURIComponent('Portfolio enquiry from ' + f.n.value)}&body=${encodeURIComponent(f.m.value + '\n\n' + f.n.value + ' <' + f.e.value + '>')}`
+    if (!ME.form) return void (location.href = mailto(f))
+    if (f._honey.value) return setState('sent') // bots fill the hidden field; pretend it worked
+    setState('sending')
+    try {
+      const r = await fetch(ME.form, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name: f.n.value, email: f.e.value, message: f.m.value, _subject: 'Portfolio message from ' + f.n.value, _template: 'table' }),
+      })
+      const j = await r.json()
+      if (!r.ok || String(j.success) !== 'true') throw new Error(j.message)
+      setState('sent')
+      f.reset()
+    } catch {
+      setState('failed')
+    }
   }
   return (
     <>
       <h2>📬 Get in touch</h2>
       <p>Have a role, a project or a question? Send me a message.{ME.replyTime && ` I reply within ${ME.replyTime}.`}</p>
-      <form className="cf" onSubmit={submit}>
-        <p><input name="n" placeholder="Your name" aria-label="Your name" required /></p>
-        <p><input name="e" type="email" placeholder="Your email" aria-label="Your email" required /></p>
-        <p><textarea name="m" rows="4" placeholder="Your message" aria-label="Message" required /></p>
-        <button className="b98">Send message</button>{' '}
-        {ME.calendar && <a className="link" href={ME.calendar} target="_blank" rel="noopener">📅 Book a call</a>}
-      </form>
+      {state === 'sent' ? (
+        <div className="note" role="status"><b>Message sent!</b> Thanks for reaching out, I'll reply to the email you gave. <button className="a" onClick={() => setState('idle')}>Send another</button></div>
+      ) : (
+        <form className="cf" onSubmit={submit}>
+          <p><input name="n" placeholder="Your name" aria-label="Your name" required /></p>
+          <p><input name="e" type="email" placeholder="Your email" aria-label="Your email" required /></p>
+          <p><textarea name="m" rows="4" placeholder="Your message" aria-label="Message" required /></p>
+          <input name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: 'none' }} />
+          <button className="b98" disabled={state === 'sending'}>{state === 'sending' ? 'Sending…' : 'Send message'}</button>{' '}
+          {ME.calendar && <a className="link" href={ME.calendar} target="_blank" rel="noopener">📅 Book a call</a>}
+          {state === 'failed' && <p className="note" role="alert">That didn't go through. Please email me directly at <a href={`mailto:${ME.email}`}>{ME.email}</a>.</p>}
+        </form>
+      )}
       <p style={{ marginTop: 10 }}>
         Or email <a href={`mailto:${ME.email}`}>{ME.email}</a> · <a href={ME.linkedin} target="_blank" rel="noopener">LinkedIn</a>
       </p>

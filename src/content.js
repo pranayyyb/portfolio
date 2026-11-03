@@ -9,6 +9,7 @@ export const ME = {
   github: 'https://github.com/pranayyyb',
   calendar: '', // booking link (e.g. Calendly); leave '' to hide the "Book a call" button
   replyTime: '', // e.g. '24 hours'; leave '' to make no promise
+  form: 'https://formsubmit.co/ajax/pranay.bathija25@gmail.com', // FormSubmit forwards contact-form messages to this inbox (activated once by email); '' falls back to mailto
   pdf: 'resume.pdf', // generated from this file by `npm run pdf` (dev server must be running); '' hides the Download PDF button
   cta: { title: '💬 New message from Pranay', text: 'Thanks for stopping by! Click to get in touch.' }, // XP-style pop-up bubble above the clock
 }
@@ -84,12 +85,6 @@ export const PROJECTS = [
   { name: 'E-Commerce Sales Analysis', type: 'SQL project', desc: 'SQL analysis of ~100,000 marketplace orders: what sells, who buys, how they pay and whether they come back. Found that only 3.1% of customers ever ordered again.', tech: ['SQL', 'SQLite', 'Data Analysis'], result: 'SQL analysis of 100k orders', link: 'https://github.com/pranayyyb/olist-ecommerce-sales-analysis' },
   { name: 'Daily Tracking App', type: 'Personal project', desc: 'A personal lifestyle tracking app built with Claude Code, bringing daily health and fitness habits into one simple tool.', tech: ['Claude Code', 'Product Design'], result: 'Personal lifestyle tracker', link: '' },
   { name: 'Retro Desktop Portfolio', type: 'Web project', desc: "The site you're on: a Windows-style desktop with draggable windows, a Word-style resume and a game of Snake.", tech: ['React', 'Vite', 'CSS'], result: "This site", link: 'https://github.com/pranayyyb/portfolio' },
-  { name: 'Production Incident Liaison', type: 'Work highlight', desc: 'The link between engineers and bank clients during production incidents, keeping both sides informed.', tech: ['Client Communication', 'Escalation Handling', 'JIRA'], result: 'Engineers ↔ bank clients', link: '' },
-  { name: 'Root Cause Analysis Reports', type: 'Work highlight', desc: 'Turn system failures into clear, actionable findings for leadership and clients.', tech: ['Root Cause Analysis', 'Confluence'], result: 'Clear findings for leadership', link: '' },
-  { name: 'Runbooks & Workflows', type: 'Work highlight', desc: 'Runbooks and process docs that cut incident resolution time and speed up onboarding.', tech: ['Process Documentation', 'Confluence'], result: 'Faster incident resolution', link: '' },
-  { name: 'Ticket Trend Analysis', type: 'Work highlight', desc: 'Spot recurring issues across client environments before they escalate.', tech: ['JIRA', 'Gap Analysis'], result: 'Fewer escalations', link: '' },
-  { name: 'SLA Reporting', type: 'Work highlight', desc: 'Track SLA compliance and report status to client stakeholders.', tech: ['SLA Management', 'Executive Reporting'], result: 'Regular status reports', link: '' },
-  { name: 'Campaign Performance Analysis', type: 'Work highlight', desc: 'Read ROAS, CPL and CTR data and A/B test results to sharpen campaign briefs.', tech: ['Google Analytics', 'Meta Ads Manager', 'A/B Testing'], result: 'Data-led campaign briefs', link: '' },
 ]
 
 export const STACK = [
