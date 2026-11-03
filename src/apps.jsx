@@ -41,7 +41,7 @@ function Resume() {
       <div className="tools">
         <span className="ti" aria-hidden="true">📄</span><span className="ti" aria-hidden="true">📂</span><span className="ti" aria-hidden="true">💾</span>
         <button className="ti" title="Print" aria-label="Print resume" onClick={() => print()}>🖨</button>
-        {ME.pdf && <><span className="vsep" /><a className="dl" href={ME.pdf} download="Pranay-Bathija-Resume.pdf">⬇ Download PDF</a></>}
+        {ME.pdf && <><span className="vsep" /><a className="dl" data-goatcounter-click="download-resume-pdf" data-goatcounter-title="Downloaded resume PDF" href={ME.pdf} download="Pranay-Bathija-Resume.pdf">⬇ Download PDF</a></>}
         <span className="vsep hide-m" />
         <span className="hide-m" aria-hidden="true"><span className="ti"><b>B</b></span><span className="ti"><i>I</i></span><span className="ti"><u>U</u></span></span>
       </div>

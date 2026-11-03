@@ -90,7 +90,10 @@ function Desktop({ live, first }) {
   const [sel, setSel] = useState()
   const [menu, setMenu] = useState(false)
   const [tip, setTip] = useState(false)
-  const open = id => dispatch({ type: 'open', id })
+  const open = id => {
+    dispatch({ type: 'open', id })
+    window.goatcounter?.count?.({ path: 'open-' + id, title: 'Opened ' + id, event: true }) // shows up in GoatCounter as an event
+  }
   const active = activeId(s)
 
   // XP-style message bubble pops up a few seconds after the desktop appears
